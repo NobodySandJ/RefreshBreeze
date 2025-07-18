@@ -28,9 +28,10 @@
       <div class="text-2xl font-bold text-custom-green">REFRESH BREEZE</div>
       
       <div class="hidden md:flex items-center gap-6">
-        <a href="#member-section" class="nav-link text-gray-600 hover:text-custom-green font-medium">Profil Member</a>
-        <a href="#schedule-section" class="nav-link text-gray-600 hover:text-custom-green font-medium">Jadwal</a>
-        <a href="#checkout-section" class="nav-link text-gray-600 hover:text-custom-green font-medium">Order Cheki</a>
+        <a href="#member-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Profil</a>
+        <a href="#schedule-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Jadwal</a>
+        <a href="#faq-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">FAQ</a>
+        <a href="#checkout-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Order Cheki</a>
       </div>
       
       <div class="flex items-center gap-4">
@@ -48,8 +49,9 @@
       </div>
     </nav>
     <div id="mobile-menu" class="hidden md:hidden bg-white py-2">
-        <a href="#member-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Profil Member</a>
+        <a href="#member-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Profil</a>
         <a href="#schedule-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Jadwal</a>
+        <a href="#faq-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">FAQ</a>
         <a href="#checkout-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Order Cheki</a>
     </div>
   </header>
@@ -71,8 +73,8 @@
                 <h3 class="text-xl font-semibold mb-1">Yan Yee 🌸</h3>
                 <p class="text-sm italic text-gray-600 mb-4">Anggun, Hangat, Cerah</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile flex-1 bg-green-300 text-custom-green py-2 rounded-md font-medium hover:bg-green-200 transition-colors" data-name="Yan Yee">View Profile</button>
-                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium" data-id="yanyee" data-name="Cheki Yan Yee" data-price="25000">Add to Cart</button>
+                    <button class="btn-profile flex-1 bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Yan Yee">View Profile</button>
+                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="yanyee" data-name="Cheki Yan Yee">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -82,8 +84,8 @@
                 <h3 class="text-xl font-semibold mb-1">Sinta 💚</h3>
                 <p class="text-sm italic text-gray-600 mb-4">Pemalu, Penasaran, Manis</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile flex-1 bg-green-300 text-custom-green py-2 rounded-md font-medium hover:bg-green-200 transition-colors" data-name="Sinta">View Profile</button>
-                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium" data-id="sinta" data-name="Cheki Sinta" data-price="25000">Add to Cart</button>
+                    <button class="btn-profile flex-1 bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Sinta">View Profile</button>
+                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="sinta" data-name="Cheki Sinta">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -93,19 +95,8 @@
                 <h3 class="text-xl font-semibold mb-1">Cissi 🦋</h3>
                 <p class="text-sm italic text-gray-600 mb-4">Imajinatif, Tenang, Penari</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile flex-1 bg-green-300 text-custom-green py-2 rounded-md font-medium hover:bg-green-200 transition-colors" data-name="Cissi">View Profile</button>
-                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium" data-id="cissi" data-name="Cheki Cissi" data-price="25000">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="150" class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
-            <img src="foto/aca.jpg" alt="Acaa" class="aspect-square w-full object-cover">
-            <div class="p-4">
-                <h3 class="text-xl font-semibold mb-1">Acaa 🧡</h3>
-                <p class="text-sm italic text-gray-600 mb-4">Ceria, Usil, Lincah</p>
-                <div class="flex gap-2">
-                    <button class="btn-profile flex-1 bg-green-300 text-custom-green py-2 rounded-md font-medium hover:bg-green-200 transition-colors" data-name="Acaa">View Profile</button>
-                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium" data-id="acaa" data-name="Cheki Acaa" data-price="25000">Add to Cart</button>
+                    <button class="btn-profile flex-1 bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Cissi">View Profile</button>
+                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="cissi" data-name="Cheki Cissi">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -115,8 +106,19 @@
                 <h3 class="text-xl font-semibold mb-1">Channie ✨</h3>
                 <p class="text-sm italic text-gray-600 mb-4">Kreatif, Cerah, Menghibur</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile flex-1 bg-green-300 text-custom-green py-2 rounded-md font-medium hover:bg-green-200 transition-colors" data-name="Channie">View Profile</button>
-                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium" data-id="channie" data-name="Cheki Channie" data-price="25000">Add to Cart</button>
+                    <button class="btn-profile flex-1 bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Channie">View Profile</button>
+                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="channie" data-name="Cheki Channie">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="150" class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+            <img src="foto/aca.jpg" alt="Acaa" class="aspect-square w-full object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold mb-1">Acaa 🧡</h3>
+                <p class="text-sm italic text-gray-600 mb-4">Ceria, Usil, Lincah</p>
+                <div class="flex gap-2">
+                    <button class="btn-profile flex-1 bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Acaa">View Profile</button>
+                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="acaa" data-name="Cheki Acaa">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -126,8 +128,8 @@
                 <h3 class="text-xl font-semibold mb-1">Ayaya ❓</h3>
                 <p class="text-sm italic text-gray-600 mb-4">Belum diketahui</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile flex-1 bg-green-300 text-custom-green py-2 rounded-md font-medium hover:bg-green-200 transition-colors" data-name="Ayaya">View Profile</button>
-                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium" data-id="ayaya" data-name="Cheki Ayaya" data-price="25000">Add to Cart</button>
+                    <button class="btn-profile flex-1 bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Ayaya">View Profile</button>
+                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="ayaya" data-name="Cheki Ayaya">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -137,8 +139,8 @@
                 <h3 class="text-xl font-semibold mb-1">Refresh Breeze (Group)</h3>
                 <p class="text-sm italic text-gray-600 mb-4">Kompak, Ceria, Menyegarkan</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile flex-1 bg-green-300 text-custom-green py-2 rounded-md font-medium hover:bg-green-200 transition-colors" data-name="Refresh Breeze (Group)">View Profile</button>
-                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium" data-id="group" data-name="Cheki All Member" data-price="30000">Add to Cart</button>
+                    <button class="btn-profile flex-1 bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Refresh Breeze (Group)">View Profile</button>
+                    <button class="btn-cart flex-1 bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="group" data-name="Cheki All Member">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -182,6 +184,17 @@
           </div>
       </div>
   </section>
+  
+  <section id="lineup-section" class="py-12 px-6">
+    <div class="container mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center text-custom-green mb-8">Line-up Event Terdekat</h2>
+        <div class="bg-white max-w-4xl mx-auto p-8 rounded-lg shadow-lg">
+            <div id="lineup-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
+            </div>
+        </div>
+    </div>
+  </section>
+
 
   <section class="py-12 px-6">
       <div class="max-w-3xl mx-auto" data-aos="fade-up">
@@ -198,13 +211,44 @@
       </div>
   </section>
 
+  <section id="faq-section" class="py-12 px-6 bg-custom-mint">
+    <div class="container mx-auto max-w-4xl" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center text-custom-green mb-8">Frequently Asked Questions (FAQ)</h2>
+        <div class="bg-white p-8 rounded-lg shadow-lg space-y-6">
+            <div>
+                <h3 class="font-bold text-lg text-custom-green">Bagaimana cara memesan Cheki?</h3>
+                <p class="text-gray-700 mt-1">Anda bisa memilih Cheki dengan member yang Anda inginkan di bagian 'Profil Member', klik 'Add to Cart', lalu scroll ke bawah ke bagian 'Keranjang Anda' dan 'Detail Pemesanan' untuk mengisi data diri dan mengunggah bukti transfer.</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg text-custom-green">Apa saja metode pembayaran yang diterima?</h3>
+                <p class="text-gray-700 mt-1">Saat ini kami hanya menerima pembayaran melalui transfer bank ke rekening BCA yang tertera di bagian 'Notes Pembayaran'.</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg text-custom-green">Apa itu Cheki?</h3>
+                <p class="text-gray-700 mt-1">Cheki adalah sesi foto instan (mirip Polaroid) bersama member idola pilihan Anda. Ini adalah kesempatan untuk mendapatkan kenang-kenangan eksklusif langsung dengan oshi Anda di event.</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg text-custom-green">Bagaimana jika saya sudah membayar tapi batal datang?</h3>
+                <p class="text-gray-700 mt-1">Jika Anda sudah melakukan Pre-Order (PO) tetapi tidak bisa datang, mohon segera konfirmasi ulang kepada kami melalui Direct Message (DM) Instagram Refresh Breeze untuk penanganan lebih lanjut.</p>
+            </div>
+             <div>
+                <h3 class="font-bold text-lg text-custom-green">Setelah checkout berhasil, apa langkah selanjutnya?</h3>
+                <p class="text-gray-700 mt-1">Anda akan menerima email konfirmasi otomatis yang berisi detail pesanan. Simpan email tersebut. Saat hari event, datang ke booth kami dan tunjukkan bukti email atau data diri Anda untuk menukarkannya dengan tiket Cheki fisik.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
   <section id="checkout-section" class="py-12 px-6">
       <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-right">
               <h2 class="text-2xl font-bold text-custom-green mb-6">Keranjang Anda</h2>
               <div id="static-cart-container" class="space-y-4 max-h-96 overflow-y-auto mb-4 pr-2">
-                  <p class="text-gray-500 text-center">Keranjang Anda kosong.</p>
+                  <div class="text-center py-8 text-gray-400">
+                    <i class="fas fa-shopping-cart fa-3x mb-4"></i>
+                    <p class="font-medium">Keranjang Anda kosong</p>
+                  </div>
               </div>
               <div class="border-t pt-4">
                   <div class="flex justify-between items-center font-bold text-lg">
@@ -233,8 +277,8 @@
               <div class="mt-8 border-t pt-6">
                   <h3 class="text-xl font-bold text-custom-green mb-4">Notes Pembayaran</h3>
                   <div class="space-y-3 text-gray-700 text-sm">
-                      <p>Harga 1x Cheki per member: <strong>Rp. 25.000</strong></p>
-                      <p>Harga 1x Cheki All Member: <strong>Rp. 30.000</strong></p>
+                      <p>Harga 1x Cheki per member: <strong id="display-price-member">Rp. 0</strong></p>
+                      <p>Harga 1x Cheki All Member: <strong id="display-price-group">Rp. 0</strong></p>
                       <p class="font-semibold pt-2">Pembayaran via transfer ke:</p>
                       <p><strong>BCA: 8162015779 (A.N. Reyhan Alfa Sukmajati)</strong></p>
                       <p class="font-semibold pt-2">NB:</p>
@@ -301,51 +345,21 @@
       
       AOS.init({ duration: 600, once: true });
 
-      const memberProfiles = {
-        // ----- DATA GRUP (DENGAN GALERI) -----
-        'Refresh Breeze (Group)':{
-          image:'foto/group.jpg',name:'Refresh Breeze',description:'Grup idola asal Tulungagung yang siap membawa hembusan angin segar untukmu!',
-          details:{'Asal':'Tulungagung, Jawa Timur','Slogan':'Kompak, Ceria, Menyegarkan!','Debut':'2025'},
-          gallery:['foto/group.jpg', 'foto/group2.jpg']
-        },
-        // ----- DATA SINTA -----
-        'Sinta':{
-          image:'foto/sinta.jpg',name:'Sinta 💚',description:'"Si pemalu tetapi suka hal-hal baru, haloo aku Sintaa"',
-          details:{'Tanggal Lahir':'12 Oktober','Hobi':'Memasak, menyanyi, menari, nonton anime, tidur','Instagram':'@sii_ntaa'},
-          gallery:['foto/sinta.jpg','foto/sinta2.jpg']
-        },
-        // ----- DATA ACAA -----
-        'Acaa':{
-          image:'foto/aca.jpg',name:'Acaa 🧡',description:'"Citcitcutcuit dengarlah kicauanku yang akan meramaikan hatimuuu"',
-          details:{'Tanggal Lahir':'25 Agustus','Hobi':'Nyanyi, turu, main emel, berak, repeat','Instagram':'@caafoxy'},
-          gallery:['foto/aca.jpg', 'foto/aca2.jpg']
-        },
-        // ----- DATA YAN YEE -----
-        'Yan Yee':{
-          image:'foto/yanyee.jpg',name:'Yan Yee 🌸',description:'"Datang bagaikan bunga sakura yang bermekaran di musim semi, haloo semuaa aku Yan Yee!"',
-          details:{'Tanggal Lahir':'22 November','Hobi':'Makeup, dance','Instagram':'@ho_yan.yee'},
-          gallery:['foto/yanyee.jpg','foto/yanyee2.jpg']
-        },
-        // ----- DATA CISSI -----
-        'Cissi':{
-          image:'foto/cissi.jpg',name:'Cissi 🦋',description:'"Aiyaiya, i\'m your little butterfly~ Kupu-kupu yang suka menari dan bisa membuatmu bahagia, halo halo semuanya aku Cissi"',
-          details:{'Tanggal Lahir':'22 Agustus','Hobi':'Dance dan melamun','Instagram':'@bakedciz'},
-          gallery:['foto/cissi.jpg','foto/cissi2.jpg']
-        },
-        // ----- DATA CHANNIE -----
-        'Channie':{
-          image:'foto/channie.jpg',name:'Channie ✨',description:'"Semungil bintang yang akan menerangi hatimu seperti bulan, halo semuanya aku Channie!"',
-          details:{'Tanggal Lahir':'8 September','Hobi':'Dance, bikin koreo, nulis, makan gorengan','Instagram':'@zzuchannie'},
-          gallery:['foto/channie.jpg', 'foto/channie2.jpg']
-        },
-        // ----- DATA AYAYA -----
-        'Ayaya':{
-          image:'https://placehold.co/400x300/c3e3a3/079108?text=Ayaya',name:'Ayaya ❓',description:'Misteri yang akan segera terungkap.',
-          details:{'Status':'Informasi akan datang','Pesan':'Tunggu kehadiranku!'},
-          gallery:['https://placehold.co/400x300/c3e3a3/079108?text=Ayaya', 'https://placehold.co/400x400/A9A9A9/FFFFFF?text=Secret']
-        }
+      const CONFIG = {
+        hargaChekiPerMember: 25000,
+        hargaChekiGrup: 30000
       };
 
+      const memberProfiles = {
+        'Refresh Breeze (Group)':{image:'foto/group.jpg',name:'Refresh Breeze',description:'Grup idola asal Tulungagung yang siap membawa hembusan angin segar untukmu!',details:{'Asal':'Tulungagung, Jawa Timur','Slogan':'Kompak, Ceria, Menyegarkan!','Debut':'2025'},gallery:['foto/group.jpg', 'foto/group2.jpg']},
+        'Sinta':{hadir:true,image:'foto/sinta.jpg',name:'Sinta 💚',description:'"Si pemalu tetapi suka hal-hal baru, haloo aku Sintaa"',details:{'Tanggal Lahir':'12 Oktober','Hobi':'Memasak, menyanyi, menari, nonton anime, tidur','Instagram':'@sii_ntaa'},gallery:['foto/sinta.jpg','foto/sinta2.jpg']},
+        'Acaa':{hadir:true,image:'foto/aca.jpg',name:'Acaa 🧡',description:'"Citcitcutcuit dengarlah kicauanku yang akan meramaikan hatimuuu"',details:{'Tanggal Lahir':'25 Agustus','Hobi':'Nyanyi, turu, main emel, berak, repeat','Instagram':'@caafoxy'},gallery:['foto/aca.jpg', 'foto/aca2.jpg']},
+        'Yan Yee':{hadir:true,image:'foto/yanyee.jpg',name:'Yan Yee 🌸',description:'"Datang bagaikan bunga sakura yang bermekaran di musim semi, haloo semuaa aku Yan Yee!"',details:{'Tanggal Lahir':'22 November','Hobi':'Makeup, dance','Instagram':'@ho_yan.yee'},gallery:['foto/yanyee.jpg','foto/yanyee2.jpg']},
+        'Cissi':{hadir:false,image:'foto/cissi.jpg',name:'Cissi 🦋',description:'"Aiyaiya, i\'m your little butterfly~ Kupu-kupu yang suka menari dan bisa membuatmu bahagia, halo halo semuanya aku Cissi"',details:{'Tanggal Lahir':'22 Agustus','Hobi':'Dance dan melamun','Instagram':'@bakedciz'},gallery:['foto/cissi.jpg','foto/cissi2.jpg']},
+        'Channie':{hadir:true,image:'foto/channie.jpg',name:'Channie ✨',description:'"Semungil bintang yang akan menerangi hatimu seperti bulan, halo semuanya aku Channie!"',details:{'Tanggal Lahir':'8 September','Hobi':'Dance, bikin koreo, nulis, makan gorengan','Instagram':'@zzuchannie'},gallery:['foto/channie.jpg', 'foto/channie2.jpg']},
+        'Ayaya':{hadir:true,image:'https://placehold.co/400x300/c3e3a3/079108?text=Ayaya',name:'Ayaya ❓',description:'Misteri yang akan segera terungkap.',details:{'Status':'Informasi akan datang','Pesan':'Tunggu kehadiranku!'},gallery:['https://placehold.co/400x300/c3e3a3/079108?text=Ayaya', 'https://placehold.co/400x400/A9A9A9/FFFFFF?text=Secret']}
+      };
+      
       let cart = [];
       const cartIconContainer = document.getElementById('cart-icon-container');
       const cartCount = document.getElementById('cart-count');
@@ -357,6 +371,29 @@
       const checkoutButton = document.getElementById('checkout-button');
       const staticCartContainer = document.getElementById('static-cart-container');
       const staticCartTotalPrice = document.getElementById('static-cart-total-price');
+      const lineupContainer = document.getElementById('lineup-container');
+
+      function setPrices() {
+        document.getElementById('display-price-member').textContent = `Rp. ${CONFIG.hargaChekiPerMember.toLocaleString('id-ID')}`;
+        document.getElementById('display-price-group').textContent = `Rp. ${CONFIG.hargaChekiGrup.toLocaleString('id-ID')}`;
+        addToCartButtons.forEach(button => {
+          button.dataset.price = (button.dataset.id === 'group') ? CONFIG.hargaChekiGrup : CONFIG.hargaChekiPerMember;
+        });
+      }
+
+      function generateLineup() {
+        lineupContainer.innerHTML = '';
+        for (const memberName in memberProfiles) {
+            if (memberName === 'Refresh Breeze (Group)') continue;
+            const member = memberProfiles[memberName];
+            const isHadir = member.hadir;
+            const statusClass = isHadir ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+            const iconClass = isHadir ? 'fas fa-check-circle' : 'fas fa-times-circle';
+            const simpleName = member.name.split(' ')[0];
+            const lineupHTML = `<div class="p-3 rounded-lg ${statusClass} flex items-center justify-center gap-2"><i class="${iconClass}"></i><span class="font-semibold">${simpleName}</span></div>`;
+            lineupContainer.innerHTML += lineupHTML;
+        }
+      }
 
       function updateCart() {
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -371,7 +408,7 @@
       function renderCartItems() {
         let generatedHTML = '';
         if (cart.length === 0) {
-            generatedHTML = '<p class="text-gray-500 text-center">Keranjang Anda kosong.</p>';
+            generatedHTML = `<div class="text-center py-8 text-gray-400"><i class="fas fa-shopping-cart fa-3x mb-4"></i><p class="font-medium">Keranjang Anda kosong</p></div>`;
         } else {
             cart.forEach((item, index) => {
                 generatedHTML += `
@@ -381,10 +418,10 @@
                             <p class="text-sm text-gray-600">Rp. ${item.price.toLocaleString('id-ID')}</p>
                         </div>
                         <div class="flex items-center gap-2">
-                           <button class="cart-quantity-btn w-6 h-6 bg-gray-200 rounded-full font-bold" data-index="${index}" data-action="decrease">-</button>
+                           <button class="cart-quantity-btn w-6 h-6 bg-gray-200 rounded-full font-bold hover:bg-gray-300 transition-colors" data-index="${index}" data-action="decrease">-</button>
                            <span class="font-medium w-4 text-center">${item.quantity}</span>
-                           <button class="cart-quantity-btn w-6 h-6 bg-gray-200 rounded-full font-bold" data-index="${index}" data-action="increase">+</button>
-                           <button class="remove-from-cart text-red-500 hover:text-red-700 ml-2 font-bold text-xl" data-index="${index}">×</button>
+                           <button class="cart-quantity-btn w-6 h-6 bg-gray-200 rounded-full font-bold hover:bg-gray-300 transition-colors" data-index="${index}" data-action="increase">+</button>
+                           <button class="remove-from-cart text-red-500 hover:text-red-700 ml-2 font-bold text-xl transition-colors" data-index="${index}">×</button>
                         </div>
                     </div>
                 `;
@@ -572,7 +609,9 @@
         };
       });
       
+      setPrices();
       updateCart();
+      generateLineup();
     });
   </script>
 
