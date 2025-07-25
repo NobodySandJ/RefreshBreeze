@@ -1,419 +1,536 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Refresh Breeze - Official</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-  <link rel="icon" type="image/png" href="foto/logo.jpg">
 
-  <style>
-    html { scroll-behavior: smooth; }
-    body { 
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden; 
-    }
-    .bg-custom-mint { background-color: #c3e3a3; }
-    .text-custom-green { color: #079108; }
-    .bg-custom-green { background-color: #079108; }
-    .text-custom-sage { color: #b8dfd8; }
-  </style>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refresh Breeze - Official</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="icon" type="image/png" href="foto/logo.jpg">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .bg-custom-mint {
+            background-color: #c3e3a3;
+        }
+
+        .text-custom-green {
+            color: #079108;
+        }
+
+        .bg-custom-green {
+            background-color: #079108;
+        }
+
+        .text-custom-sage {
+            color: #b8dfd8;
+        }
+    </style>
 </head>
+
 <body class="bg-custom-mint text-gray-800 leading-relaxed">
 
-  <header class="sticky top-0 bg-white shadow-md z-40">
+    <header class="sticky top-0 bg-white shadow-md z-40">
     <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-      <div class="text-xl sm:text-2xl font-bold text-custom-green">REFRESH BREEZE</div>
-      
-      <div class="hidden md:flex items-center gap-6">
-        <a href="#member-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Profil</a>
-        <a href="#schedule-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Jadwal</a>
-        <a href="#faq-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">FAQ</a>
-        <a href="#checkout-section" class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Order Cheki</a>
-      </div>
-      
-      <div class="flex items-center gap-2 sm:gap-4">
-        <a href="app/RefreshBreeze.apk" class="bg-custom-green text-white px-3 py-1 rounded-full text-xs sm:text-sm font-medium flex items-center gap-2 hover:bg-green-700 transition-colors">
-          <i class="fas fa-download"></i>
-          <span class="hidden sm:inline">Download App</span>
-        </a>
-        <div id="cart-icon-container" class="relative cursor-pointer px-2">
-          <i class="fas fa-shopping-cart text-2xl text-custom-sage"></i>
-          <span id="cart-count" class="absolute -top-2 -right-1 sm:-right-3 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+        <div class="text-xl sm:text-2xl font-bold text-custom-green">REFRESH BREEZE</div>
+
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#member-section"
+                    class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Profil</a>
+                <a href="#schedule-section"
+                    class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Jadwal</a>
+                <a href="#faq-section"
+                    class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">FAQ</a>
+                <a href="#checkout-section"
+                    class="nav-link text-gray-600 hover:text-custom-green font-medium transition-colors">Order Cheki</a>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="app/RefreshBreeze.apk"
+                    class="bg-custom-green text-white px-3 py-1 rounded-full text-xs sm:text-sm font-medium flex items-center gap-2 hover:bg-green-700 transition-colors">
+                    <i class="fas fa-download"></i>
+                    <span class="hidden sm:inline">Download App</span>
+                </a>
+                <div id="cart-icon-container" class="relative cursor-pointer px-2">
+                    <i class="fas fa-shopping-cart text-2xl text-custom-sage"></i>
+                    <span id="cart-count"
+                        class="absolute -top-2 -right-1 sm:-right-3 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-custom-green text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
-        <button id="mobile-menu-button" class="md:hidden text-custom-green text-2xl">
-            <i class="fas fa-bars"></i>
-        </button>
-      </div>
     </nav>
+    
     <div id="mobile-menu" class="hidden md:hidden bg-white py-2">
         <a href="#member-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Profil</a>
-        <a href="#schedule-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Jadwal</a>
+        <a href="#schedule-section"
+            class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Jadwal</a>
         <a href="#faq-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">FAQ</a>
-        <a href="#checkout-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Order Cheki</a>
+        <a href="#checkout-section" class="nav-link block text-center py-2 text-gray-600 hover:bg-gray-100">Order
+            Cheki</a>
     </div>
-  </header>
+</header>
 
-  <section class="bg-custom-mint text-center py-12 px-6">
-    <h1 class="text-2xl md:text-4xl font-bold text-custom-green mb-4">Angin segar yang siap menyejukan kalian semua. We Are Refresh Breeze.</h1>
-    <div class="max-w-3xl mx-auto text-gray-700 space-y-3">
-        <p>Berasal dari Tulungagung, Jawa Timur, Refresh Breeze hadir untuk membawa hembusan angin segar ke panggung idola Indonesia. Dengan semangat dan energi yang ceria, kami adalah sekumpulan gadis berbakat yang siap menyejukkan hari-harimu melalui musik dan tarian.</p>
-        <p class="font-semibold text-custom-green">Dukung kami terus dan mari ciptakan kenangan indah bersama!</p>
-    </div>
-    <p class="max-w-2xl mx-auto mt-6">Jangan lupa hijaukan area sekitar dengan MiX🗣️ dan tuing tuing🐇🦿 ya! 💚🍃💚</p>
-  </section>
+    <section class="bg-custom-mint text-center py-12 px-6">
+        <h1 class="text-2xl md:text-4xl font-bold text-custom-green mb-4">Angin segar yang siap menyejukan kalian semua.
+            We Are Refresh Breeze.</h1>
+        <div class="max-w-3xl mx-auto text-gray-700 space-y-3">
+            <p>Berasal dari Tulungagung, Jawa Timur, Refresh Breeze hadir untuk membawa hembusan angin segar ke panggung
+                idola Indonesia. Dengan semangat dan energi yang ceria, kami adalah sekumpulan gadis berbakat yang siap
+                menyejukkan hari-harimu melalui musik dan tarian.</p>
+            <p class="font-semibold text-custom-green">Dukung kami terus dan mari ciptakan kenangan indah bersama!</p>
+        </div>
+        <p class="max-w-2xl mx-auto mt-6">Jangan lupa hijaukan area sekitar dengan MiX🗣️ dan tuing tuing🐇🦿 ya! 💚🍃💚
+        </p>
+    </section>
 
-  <main id="member-section" class="container mx-auto px-4 sm:px-6 py-8 bg-white rounded-xl shadow-lg">
+    <main id="member-section" class="container mx-auto px-4 sm:px-6 py-8 bg-white rounded-xl shadow-lg">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
             <img src="foto/yanyee.jpg" alt="Yan Yee" class="aspect-square w-full object-cover">
             <div class="p-3">
                 <h3 class="text-base font-semibold mb-1">Yan Yee 🌸</h3>
                 <p class="text-xs text-gray-600 mb-3">Anggun, Hangat, Cerah</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Yan Yee">Profile</button>
-                    <button class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="yanyee" data-name="Cheki Yan Yee">Add</button>
+                    <button
+                        class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors"
+                        data-name="Yan Yee">Profile</button>
+                    <button
+                        class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors"
+                        data-id="yanyee" data-name="Cheki Yan Yee">Add</button>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
             <img src="foto/sinta.jpg" alt="Sinta" class="aspect-square w-full object-cover">
             <div class="p-3">
                 <h3 class="text-base font-semibold mb-1">Sinta 💚</h3>
                 <p class="text-xs text-gray-600 mb-3">Pemalu, Penasaran</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Sinta">Profile</button>
-                    <button class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="sinta" data-name="Cheki Sinta">Add</button>
+                    <button
+                        class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors"
+                        data-name="Sinta">Profile</button>
+                    <button
+                        class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors"
+                        data-id="sinta" data-name="Cheki Sinta">Add</button>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
             <img src="foto/cissi.jpg" alt="Cissi" class="aspect-square w-full object-cover">
             <div class="p-3">
                 <h3 class="text-base font-semibold mb-1">Cissi 🦋</h3>
                 <p class="text-xs text-gray-600 mb-3">Imajinatif, Penari</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Cissi">Profile</button>
-                    <button class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="cissi" data-name="Cheki Cissi">Add</button>
+                    <button
+                        class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors"
+                        data-name="Cissi">Profile</button>
+                    <button
+                        class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors"
+                        data-id="cissi" data-name="Cheki Cissi">Add</button>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
             <img src="foto/channie.jpg" alt="Channie" class="aspect-square w-full object-cover">
             <div class="p-3">
                 <h3 class="text-base font-semibold mb-1">Channie ✨</h3>
                 <p class="text-xs text-gray-600 mb-3">Kreatif, Menghibur</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Channie">Profile</button>
-                    <button class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="channie" data-name="Cheki Channie">Add</button>
+                    <button
+                        class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors"
+                        data-name="Channie">Profile</button>
+                    <button
+                        class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors"
+                        data-id="channie" data-name="Cheki Channie">Add</button>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
             <img src="foto/aca.jpg" alt="Acaa" class="aspect-square w-full object-cover">
             <div class="p-3">
                 <h3 class="text-base font-semibold mb-1">Acaa 🧡</h3>
                 <p class="text-xs text-gray-600 mb-3">Ceria, Usil, Lincah</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Acaa">Profile</button>
-                    <button class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="acaa" data-name="Cheki Acaa">Add</button>
+                    <button
+                        class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors"
+                        data-name="Acaa">Profile</button>
+                    <button
+                        class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors"
+                        data-id="acaa" data-name="Cheki Acaa">Add</button>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
-            <img src="https://placehold.co/400x300/c3e3a3/079108?text=Ayaya" alt="Ayaya" class="aspect-square w-full object-cover">
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+            <img src="https://placehold.co/400x300/c3e3a3/079108?text=Ayaya" alt="Ayaya"
+                class="aspect-square w-full object-cover">
             <div class="p-3">
                 <h3 class="text-base font-semibold mb-1">Ayaya ❓</h3>
                 <p class="text-xs text-gray-600 mb-3">Belum diketahui</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Ayaya">Profile</button>
-                    <button class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="ayaya" data-name="Cheki Ayaya">Add</button>
+                    <button
+                        class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors"
+                        data-name="Ayaya">Profile</button>
+                    <button
+                        class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors"
+                        data-id="ayaya" data-name="Cheki Ayaya">Add</button>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
             <img src="foto/group.jpg" alt="Refresh Breeze Group" class="aspect-square w-full object-cover">
             <div class="p-3">
                 <h3 class="text-base font-semibold mb-1">Group</h3>
                 <p class="text-xs text-gray-600 mb-3">Kompak & Ceria</p>
                 <div class="flex gap-2">
-                    <button class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors" data-name="Refresh Breeze (Group)">Profile</button>
-                    <button class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors" data-id="group" data-name="Cheki All Member">Add</button>
+                    <button
+                        class="btn-profile w-full text-xs bg-transparent border border-custom-green text-custom-green py-2 rounded-md font-medium hover:bg-custom-green hover:text-white transition-colors"
+                        data-name="Refresh Breeze (Group)">Profile</button>
+                    <button
+                        class="btn-cart w-full text-xs bg-custom-green text-white py-2 rounded-md font-medium hover:bg-green-700 transition-colors"
+                        data-id="group" data-name="Cheki All Member">Add</button>
                 </div>
             </div>
         </div>
+        <div
+            class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
+            <img src="https://placehold.co/400x300/e2e8f0/4a5568?text=Coming+Soon" alt="Coming Soon"
+                class="aspect-square w-full object-cover">
+            <div class="p-3">
+                <h3 class="text-base font-semibold mb-1">Coming Soon 🤫</h3>
+                <p class="text-xs text-gray-600 mb-3">Sedang dalam tahap perekrutan...</p>
+                <div class="flex gap-2">
+                    <button
+                        class="w-full text-xs bg-transparent border border-gray-300 text-gray-400 py-2 rounded-md font-medium cursor-not-allowed"
+                        disabled>Profile</button>
+                    <button
+                        class="w-full text-xs bg-gray-300 text-white py-2 rounded-md font-medium cursor-not-allowed"
+                        disabled>Add</button>
+                </div>
+            </div>
+        </div>
+        </div>
+</main>
+
+    <section id="schedule-section" class="bg-custom-mint py-12 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Jadwal Event Mendatang</h2>
+            <div class="bg-white max-w-4xl mx-auto p-6 sm:p-8 rounded-lg shadow-lg space-y-6">
+                <div class="flex flex-col sm:flex-row items-center border-b pb-4">
+                    <div class="text-center sm:text-left sm:w-1/4 mb-4 sm:mb-0">
+                        <p class="text-xl sm:text-2xl font-bold text-custom-green">25 JUL</p>
+                        <p class="text-gray-600">2025</p>
+                    </div>
+                    <div class="sm:w-3/4 text-center sm:text-left">
+                        <h3 class="text-lg sm:text-xl font-semibold">Japan Fest Tulungagung</h3>
+                        <p class="text-gray-500 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i>GOR
+                            Lembu Peteng, Tulungagung</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center border-b pb-4">
+                    <div class="text-center sm:text-left sm:w-1/4 mb-4 sm:mb-0">
+                        <p class="text-xl sm:text-2xl font-bold text-custom-green">17 AGU</p>
+                        <p class="text-gray-600">2025</p>
+                    </div>
+                    <div class="sm:w-3/4 text-center sm:text-left">
+                        <h3 class="text-lg sm:text-xl font-semibold">Malang Anime Day</h3>
+                        <p class="text-gray-500 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i>Malang
+                            Creative Center, Malang</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center">
+                    <div class="text-center sm:text-left sm:w-1/4 mb-4 sm:mb-0">
+                        <p class="text-xl sm:text-2xl font-bold text-custom-green">30 SEP</p>
+                        <p class="text-gray-600">2025</p>
+                    </div>
+                    <div class="sm:w-3/4 text-center sm:text-left">
+                        <h3 class="text-lg sm:text-xl font-semibold">Surabaya Cosplay Convention</h3>
+                        <p class="text-gray-500 text-sm sm:text-base"><i
+                                class="fas fa-map-marker-alt mr-2"></i>Tunjungan Plaza Convention Hall, Surabaya</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lineup-section" class="py-12 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Line-up Event Terdekat</h2>
+            <div class="bg-white max-w-4xl mx-auto p-6 sm:p-8 rounded-lg shadow-lg">
+                <div id="lineup-container" class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-12 px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Cara Order Cheki</h2>
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+                <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                    <li>Pilih item di atas dan klik "Add".</li>
+                    <li>Scroll ke bawah untuk melihat keranjang dan mengisi form checkout.</li>
+                    <li>Lakukan pembayaran sesuai total harga dan upload bukti transfer.</li>
+                    <li>Datang ke event, kunjungi booth kami, dan tukarkan bukti pembayaran dengan tiket cheki.</li>
+                    <li>Nikmati sesi cheki bersama oshi Anda!</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq-section" class="py-12 px-6 bg-custom-mint">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Frequently Asked Questions
+                (FAQ)</h2>
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg space-y-6 text-sm sm:text-base">
+                <div>
+                    <h3 class="font-bold text-lg text-custom-green">Bagaimana cara memesan Cheki?</h3>
+                    <p class="text-gray-700 mt-1">Pilih Cheki member yang Anda inginkan, klik 'Add', lalu scroll ke
+                        bawah ke bagian 'Keranjang Anda' dan 'Detail Pemesanan' untuk mengisi data diri dan mengunggah
+                        bukti transfer.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-custom-green">Apa saja metode pembayaran yang diterima?</h3>
+                    <p class="text-gray-700 mt-1">Saat ini kami hanya menerima pembayaran melalui transfer bank ke
+                        rekening BCA yang tertera di bagian 'Notes Pembayaran'.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-custom-green">Apa itu Cheki?</h3>
+                    <p class="text-gray-700 mt-1">Cheki adalah sesi foto instan (mirip Polaroid) bersama member idola
+                        pilihan Anda. Ini adalah kesempatan untuk mendapatkan kenang-kenangan eksklusif langsung dengan
+                        oshi Anda di event.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-custom-green">Bagaimana jika saya sudah membayar tapi batal
+                        datang?</h3>
+                    <p class="text-gray-700 mt-1">Jika Anda sudah melakukan Pre-Order (PO) tetapi tidak bisa datang,
+                        mohon segera konfirmasi ulang kepada kami melalui Direct Message (DM) Instagram Refresh Breeze
+                        untuk penanganan lebih lanjut.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-custom-green">Setelah checkout berhasil, apa langkah selanjutnya?
+                    </h3>
+                    <p class="text-gray-700 mt-1">Anda akan menerima email konfirmasi otomatis. Simpan email tersebut.
+                        Saat hari event, datang ke booth kami dan tunjukkan bukti email atau data diri Anda untuk
+                        menukarkannya dengan tiket Cheki fisik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkout-section" class="py-12 px-6">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-custom-green mb-6">Keranjang Anda</h2>
+                <div id="static-cart-container" class="space-y-4 max-h-96 overflow-y-auto mb-4 pr-2">
+                    <div class="text-center py-8 text-gray-400">
+                        <i class="fas fa-shopping-cart fa-3x mb-4"></i>
+                        <p class="font-medium">Keranjang Anda kosong</p>
+                    </div>
+                </div>
+                <div class="border-t pt-4">
+                    <div class="flex justify-between items-center font-bold text-lg">
+                        <span>Total:</span>
+                        <span id="static-cart-total-price">Rp. 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-custom-green mb-4">Notes Pembayaran</h3>
+                    <div class="space-y-3 text-gray-700 text-sm">
+                        <p>Harga 1x Cheki per member: <strong id="display-price-member">Rp. 0</strong></p>
+                        <p>Harga 1x Cheki All Member: <strong id="display-price-group">Rp. 0</strong></p>
+                        <p class="font-semibold pt-2">Pembayaran via transfer ke:</p>
+                        <p><strong>BCA: 8162015779 (A.N. Reyhan Alfa Sukmajati)</strong></p>
+                        <p class="font-semibold pt-2">NB:</p>
+                        <ul class="list-disc list-inside">
+                            <li>Jika sudah PO tetapi tidak bisa datang, silahkan konfirmasi ulang via DM Instagram
+                                Refresh Breeze.</li>
+                            <li>Bukti pembayaran wajib menampakan jam dan tanggal transfer.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-custom-green mb-6 border-t pt-6">Detail Pemesanan</h2>
+                <form id="checkout-form" class="space-y-4">
+                    <input type="text" placeholder="Nama" id="name"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <input type="tel" placeholder="WhatsApp (e.g. 0812...)" id="whatsapp"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <input type="email" placeholder="Email" id="email"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500" required>
+                    <input type="text" placeholder="Instagram" id="instagram"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Upload Bukti Pembayaran</label>
+                        <input type="file" id="payment-proof"
+                            class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-custom-mint file:text-custom-green hover:file:bg-green-200 cursor-pointer"
+                            required>
+                    </div>
+                    <button type="submit" id="submit-button"
+                        class="w-full bg-custom-green text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors flex justify-center items-center gap-2">
+                        <span id="submit-button-text">Konfirmasi Pemesanan</span>
+                        <i id="submit-spinner" class="fas fa-spinner fa-spin hidden"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-white text-center py-6 mt-12">
+        <div class="text-xl font-bold text-custom-green">REFRESH BREEZE</div>
+        <p class="text-gray-600 text-sm mt-2">© 2025 Refresh Breeze</p>
+        <div class="mt-4 flex justify-center gap-6">
+            <a href="https://www.instagram.com/refbreeze/,https://www.youtube.com/@refreshbreeze,untuk" target="_blank"
+                rel="noopener noreferrer" class="text-custom-green hover:text-green-700 transition-colors text-2xl">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer"
+                class="text-custom-green hover:text-green-700 transition-colors text-2xl">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:#" class="text-custom-green hover:text-green-700 transition-colors text-2xl">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+
+    <div id="profileModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 text-center relative">
+            <button id="closeProfileModal"
+                class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">×</button>
+            <img id="modal-img" src="" alt="Profile Picture"
+                class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-custom-mint object-cover">
+            <h2 id="modal-name" class="text-2xl font-bold text-custom-green mb-2"></h2>
+            <p id="modal-description" class="text-md italic text-gray-600 mb-4"></p>
+            <div id="modal-details" class="text-left space-y-2 mb-4"></div>
+            <div id="modal-gallery" class="flex justify-center gap-2"></div>
+        </div>
     </div>
-  </main>
-  
-  <section id="schedule-section" class="bg-custom-mint py-12 px-6">
-      <div class="container mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Jadwal Event Mendatang</h2>
-          <div class="bg-white max-w-4xl mx-auto p-6 sm:p-8 rounded-lg shadow-lg space-y-6">
-              <div class="flex flex-col sm:flex-row items-center border-b pb-4">
-                  <div class="text-center sm:text-left sm:w-1/4 mb-4 sm:mb-0">
-                      <p class="text-xl sm:text-2xl font-bold text-custom-green">25 JUL</p>
-                      <p class="text-gray-600">2025</p>
-                  </div>
-                  <div class="sm:w-3/4 text-center sm:text-left">
-                      <h3 class="text-lg sm:text-xl font-semibold">Japan Fest Tulungagung</h3>
-                      <p class="text-gray-500 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i>GOR Lembu Peteng, Tulungagung</p>
-                  </div>
-              </div>
-              <div class="flex flex-col sm:flex-row items-center border-b pb-4">
-                  <div class="text-center sm:text-left sm:w-1/4 mb-4 sm:mb-0">
-                      <p class="text-xl sm:text-2xl font-bold text-custom-green">17 AGU</p>
-                      <p class="text-gray-600">2025</p>
-                  </div>
-                  <div class="sm:w-3/4 text-center sm:text-left">
-                      <h3 class="text-lg sm:text-xl font-semibold">Malang Anime Day</h3>
-                      <p class="text-gray-500 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i>Malang Creative Center, Malang</p>
-                  </div>
-              </div>
-              <div class="flex flex-col sm:flex-row items-center">
-                  <div class="text-center sm:text-left sm:w-1/4 mb-4 sm:mb-0">
-                      <p class="text-xl sm:text-2xl font-bold text-custom-green">30 SEP</p>
-                      <p class="text-gray-600">2025</p>
-                  </div>
-                  <div class="sm:w-3/4 text-center sm:text-left">
-                      <h3 class="text-lg sm:text-xl font-semibold">Surabaya Cosplay Convention</h3>
-                      <p class="text-gray-500 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i>Tunjungan Plaza Convention Hall, Surabaya</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-  
-  <section id="lineup-section" class="py-12 px-6">
-    <div class="container mx-auto">
-        <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Line-up Event Terdekat</h2>
-        <div class="bg-white max-w-4xl mx-auto p-6 sm:p-8 rounded-lg shadow-lg">
-            <div id="lineup-container" class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+
+    <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
+            <button id="closeCartModal"
+                class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">×</button>
+            <h2 class="text-2xl font-bold text-custom-green mb-6">Keranjang Belanja Anda</h2>
+            <div id="modal-cart-container" class="space-y-4 max-h-64 overflow-y-auto mb-4 pr-2"></div>
+            <div class="border-t pt-4">
+                <div class="flex justify-between items-center font-bold text-lg">
+                    <span>Total:</span>
+                    <span id="modal-cart-total-price">Rp. 0</span>
+                </div>
+                <button id="checkout-button"
+                    class="mt-4 w-full bg-custom-green text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors">Lanjut
+                    ke Checkout</button>
             </div>
         </div>
     </div>
-  </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <section class="py-12 px-6">
-      <div class="max-w-3xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Cara Order Cheki</h2>
-          <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-              <ol class="list-decimal list-inside space-y-4 text-gray-700">
-                  <li>Pilih item di atas dan klik "Add".</li>
-                  <li>Scroll ke bawah untuk melihat keranjang dan mengisi form checkout.</li>
-                  <li>Lakukan pembayaran sesuai total harga dan upload bukti transfer.</li>
-                  <li>Datang ke event, kunjungi booth kami, dan tukarkan bukti pembayaran dengan tiket cheki.</li>
-                  <li>Nikmati sesi cheki bersama oshi Anda!</li>
-              </ol>
-          </div>
-      </div>
-  </section>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxnI0cvOwzxUko6G2a8DLXKr0nGmV03S7D8ufaPrjfeK848HtJenyvAEmlYD_mm7ip6/exec';
 
-  <section id="faq-section" class="py-12 px-6 bg-custom-mint">
-    <div class="container mx-auto max-w-4xl">
-        <h2 class="text-2xl md:text-3xl font-bold text-center text-custom-green mb-8">Frequently Asked Questions (FAQ)</h2>
-        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg space-y-6 text-sm sm:text-base">
-            <div>
-                <h3 class="font-bold text-lg text-custom-green">Bagaimana cara memesan Cheki?</h3>
-                <p class="text-gray-700 mt-1">Pilih Cheki member yang Anda inginkan, klik 'Add', lalu scroll ke bawah ke bagian 'Keranjang Anda' dan 'Detail Pemesanan' untuk mengisi data diri dan mengunggah bukti transfer.</p>
-            </div>
-            <div>
-                <h3 class="font-bold text-lg text-custom-green">Apa saja metode pembayaran yang diterima?</h3>
-                <p class="text-gray-700 mt-1">Saat ini kami hanya menerima pembayaran melalui transfer bank ke rekening BCA yang tertera di bagian 'Notes Pembayaran'.</p>
-            </div>
-            <div>
-                <h3 class="font-bold text-lg text-custom-green">Apa itu Cheki?</h3>
-                <p class="text-gray-700 mt-1">Cheki adalah sesi foto instan (mirip Polaroid) bersama member idola pilihan Anda. Ini adalah kesempatan untuk mendapatkan kenang-kenangan eksklusif langsung dengan oshi Anda di event.</p>
-            </div>
-            <div>
-                <h3 class="font-bold text-lg text-custom-green">Bagaimana jika saya sudah membayar tapi batal datang?</h3>
-                <p class="text-gray-700 mt-1">Jika Anda sudah melakukan Pre-Order (PO) tetapi tidak bisa datang, mohon segera konfirmasi ulang kepada kami melalui Direct Message (DM) Instagram Refresh Breeze untuk penanganan lebih lanjut.</p>
-            </div>
-             <div>
-                <h3 class="font-bold text-lg text-custom-green">Setelah checkout berhasil, apa langkah selanjutnya?</h3>
-                <p class="text-gray-700 mt-1">Anda akan menerima email konfirmasi otomatis. Simpan email tersebut. Saat hari event, datang ke booth kami dan tunjukkan bukti email atau data diri Anda untuk menukarkannya dengan tiket Cheki fisik.</p>
-            </div>
-        </div>
-    </div>
-  </section>
+        document.addEventListener('DOMContentLoaded', () => {
 
-  <section id="checkout-section" class="py-12 px-6">
-      <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
-          <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-              <h2 class="text-2xl font-bold text-custom-green mb-6">Keranjang Anda</h2>
-              <div id="static-cart-container" class="space-y-4 max-h-96 overflow-y-auto mb-4 pr-2">
-                  <div class="text-center py-8 text-gray-400">
-                    <i class="fas fa-shopping-cart fa-3x mb-4"></i>
-                    <p class="font-medium">Keranjang Anda kosong</p>
-                  </div>
-              </div>
-              <div class="border-t pt-4">
-                  <div class="flex justify-between items-center font-bold text-lg">
-                      <span>Total:</span>
-                      <span id="static-cart-total-price">Rp. 0</span>
-                  </div>
-              </div>
-          </div>
+            const CONFIG = {
+                hargaChekiPerMember: 25000,
+                hargaChekiGrup: 30000
+            };
 
-          <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-              <div class="mb-8">
-                  <h3 class="text-xl font-bold text-custom-green mb-4">Notes Pembayaran</h3>
-                  <div class="space-y-3 text-gray-700 text-sm">
-                      <p>Harga 1x Cheki per member: <strong id="display-price-member">Rp. 0</strong></p>
-                      <p>Harga 1x Cheki All Member: <strong id="display-price-group">Rp. 0</strong></p>
-                      <p class="font-semibold pt-2">Pembayaran via transfer ke:</p>
-                      <p><strong>BCA: 8162015779 (A.N. Reyhan Alfa Sukmajati)</strong></p>
-                      <p class="font-semibold pt-2">NB:</p>
-                      <ul class="list-disc list-inside">
-                          <li>Jika sudah PO tetapi tidak bisa datang, silahkan konfirmasi ulang via DM Instagram Refresh Breeze.</li>
-                          <li>Bukti pembayaran wajib menampakan jam dan tanggal transfer.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <h2 class="text-2xl font-bold text-custom-green mb-6 border-t pt-6">Detail Pemesanan</h2>
-              <form id="checkout-form" class="space-y-4">
-                  <input type="text" placeholder="Nama" id="name" class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500" required>
-                  <input type="tel" placeholder="WhatsApp (e.g. 0812...)" id="whatsapp" class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500" required>
-                  <input type="email" placeholder="Email" id="email" class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500" required>
-                  <input type="text" placeholder="Instagram" id="instagram" class="w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
-                  <div>
-                      <label class="block text-sm font-medium text-gray-700">Upload Bukti Pembayaran</label>
-                      <input type="file" id="payment-proof" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-custom-mint file:text-custom-green hover:file:bg-green-200 cursor-pointer" required>
-                  </div>
-                  <button type="submit" id="submit-button" class="w-full bg-custom-green text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors flex justify-center items-center gap-2">
-                      <span id="submit-button-text">Konfirmasi Pemesanan</span>
-                      <i id="submit-spinner" class="fas fa-spinner fa-spin hidden"></i>
-                  </button>
-              </form>
-          </div>
-          
-      </div>
-  </section>
+            const memberProfiles = {
+                'Yan Yee': { hadir: true, image: 'foto/yanyee.jpg', name: 'Yan Yee 🌸', description: '"Datang bagaikan bunga sakura yang bermekaran di musim semi, haloo semuaa aku Yan Yee!"', details: { 'Tanggal Lahir': '22 November', 'Hobi': 'Makeup, dance', 'Instagram': '@ho_yan.yee' }, gallery: ['foto/yanyee.jpg', 'foto/yanyee2.jpg'] },
+                'Sinta': { hadir: false, image: 'foto/sinta.jpg', name: 'Sinta 💚', description: '"Si pemalu tetapi suka hal-hal baru, haloo aku Sintaa"', details: { 'Tanggal Lahir': '12 Oktober', 'Hobi': 'Memasak, menyanyi, menari, nonton anime, tidur', 'Instagram': '@sii_ntaa' }, gallery: ['foto/sinta.jpg', 'foto/sinta2.jpg'] },
+                'Cissi': { hadir: false, image: 'foto/cissi.jpg', name: 'Cissi 🦋', description: '"Aiyaiya, i\'m your little butterfly~ Kupu-kupu yang suka menari dan bisa membuatmu bahagia, halo halo semuanya aku Cissi"', details: { 'Tanggal Lahir': '22 Agustus', 'Hobi': 'Dance dan melamun', 'Instagram': '@bakedciz' }, gallery: ['foto/cissi.jpg', 'foto/cissi2.jpg'] },
+                'Channie': { hadir: true, image: 'foto/channie.jpg', name: 'Channie ✨', description: '"Semungil bintang yang akan menerangi hatimu seperti bulan, halo semuanya aku Channie!"', details: { 'Tanggal Lahir': '8 September', 'Hobi': 'Dance, bikin koreo, nulis, makan gorengan', 'Instagram': '@zzuchannie' }, gallery: ['foto/channie.jpg', 'foto/channie2.jpg'] },
+                'Acaa': { hadir: true, image: 'foto/aca.jpg', name: 'Acaa 🧡', description: '"Citcitcutcuit dengarlah kicauanku yang akan meramaikan hatimuuu"', details: { 'Tanggal Lahir': '25 Agustus', 'Hobi': 'Nyanyi, turu, main emel, berak, repeat', 'Instagram': '@caafoxy' }, gallery: ['foto/aca.jpg', 'foto/aca2.jpg'] },
+                'Ayaya': { hadir: true, image: 'https://placehold.co/400x300/c3e3a3/079108?text=Ayaya', name: 'Ayaya ❓', description: 'Misteri yang akan segera terungkap.', details: { 'Status': 'Informasi akan datang', 'Pesan': 'Tunggu kehadiranku!' }, gallery: ['https://placehold.co/400x300/c3e3a3/079108?text=Ayaya', 'https://placehold.co/400x400/A9A9A9/FFFFFF?text=Secret'] },
+                'Refresh Breeze (Group)': { image: 'foto/group.jpg', name: 'Refresh Breeze', description: 'Grup idola asal Tulungagung yang siap membawa hembusan angin segar untukmu!', details: { 'Asal': 'Tulungagung, Jawa Timur', 'Slogan': 'Kompak, Ceria, Menyegarkan!', 'Debut': '13 Januari 2023' }, gallery: ['foto/group.jpg', 'foto/group2.jpg'] }
+            };
 
-  <footer class="bg-white text-center py-6 mt-12">
-    <div class="text-xl font-bold text-custom-green">REFRESH BREEZE</div>
-    <p class="text-gray-600 text-sm mt-2">© 2025 Refresh Breeze</p>
-    <div class="mt-4 flex justify-center gap-6">
-        <a href="https://www.instagram.com/refbreeze/,https://www.youtube.com/@refreshbreeze,untuk" target="_blank" rel="noopener noreferrer" class="text-custom-green hover:text-green-700 transition-colors text-2xl">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="text-custom-green hover:text-green-700 transition-colors text-2xl">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="mailto:#" class="text-custom-green hover:text-green-700 transition-colors text-2xl">
-            <i class="fas fa-envelope"></i>
-        </a>
-    </div>
-  </footer>
+            let cart = [];
+            const cartIconContainer = document.getElementById('cart-icon-container');
+            const cartCount = document.getElementById('cart-count');
+            const addToCartButtons = document.querySelectorAll('.btn-cart');
+            const cartModal = document.getElementById('cartModal');
+            const closeCartModal = document.getElementById('closeCartModal');
+            const modalCartContainer = document.getElementById('modal-cart-container');
+            const modalCartTotalPrice = document.getElementById('modal-cart-total-price');
+            const checkoutButton = document.getElementById('checkout-button');
+            const staticCartContainer = document.getElementById('static-cart-container');
+            const staticCartTotalPrice = document.getElementById('static-cart-total-price');
+            const lineupContainer = document.getElementById('lineup-container');
 
-  <div id="profileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 text-center relative">
-      <button id="closeProfileModal" class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">×</button>
-      <img id="modal-img" src="" alt="Profile Picture" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-custom-mint object-cover">
-      <h2 id="modal-name" class="text-2xl font-bold text-custom-green mb-2"></h2>
-      <p id="modal-description" class="text-md italic text-gray-600 mb-4"></p>
-      <div id="modal-details" class="text-left space-y-2 mb-4"></div>
-      <div id="modal-gallery" class="flex justify-center gap-2"></div>
-    </div>
-  </div>
+            function setPrices() {
+                document.getElementById('display-price-member').textContent = `Rp. ${CONFIG.hargaChekiPerMember.toLocaleString('id-ID')}`;
+                document.getElementById('display-price-group').textContent = `Rp. ${CONFIG.hargaChekiGrup.toLocaleString('id-ID')}`;
+                addToCartButtons.forEach(button => {
+                    button.dataset.price = (button.dataset.id === 'group') ? CONFIG.hargaChekiGrup : CONFIG.hargaChekiPerMember;
+                });
+            }
 
-  <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
-        <button id="closeCartModal" class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">×</button>
-        <h2 class="text-2xl font-bold text-custom-green mb-6">Keranjang Belanja Anda</h2>
-        <div id="modal-cart-container" class="space-y-4 max-h-64 overflow-y-auto mb-4 pr-2"></div>
-        <div class="border-t pt-4">
-            <div class="flex justify-between items-center font-bold text-lg">
-                <span>Total:</span>
-                <span id="modal-cart-total-price">Rp. 0</span>
-            </div>
-            <button id="checkout-button" class="mt-4 w-full bg-custom-green text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors">Lanjut ke Checkout</button>
-        </div>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            function generateLineup() {
+                if (!lineupContainer) return;
+                lineupContainer.innerHTML = '';
+                for (const memberName in memberProfiles) {
+                    if (memberName === 'Refresh Breeze (Group)') continue;
+                    const member = memberProfiles[memberName];
+                    if (!member || !member.name) continue;
+                    const isHadir = member.hadir;
+                    const statusClass = isHadir ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+                    const iconClass = isHadir ? 'fas fa-check-circle' : 'fas fa-times-circle';
+                    const simpleName = member.name;
+                    const lineupHTML = `<div class="p-3 rounded-lg ${statusClass} flex items-center justify-center gap-2"><i class="${iconClass}"></i><span class="font-semibold">${simpleName}</span></div>`;
+                    lineupContainer.innerHTML += lineupHTML;
+                }
+            }
 
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxnI0cvOwzxUko6G2a8DLXKr0nGmV03S7D8ufaPrjfeK848HtJenyvAEmlYD_mm7ip6/exec';
+            function updateCart() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const formattedTotal = `Rp. ${totalPrice.toLocaleString('id-ID')}`;
+                modalCartTotalPrice.textContent = formattedTotal;
+                staticCartTotalPrice.textContent = formattedTotal;
+                renderCartItems();
+            }
 
-    document.addEventListener('DOMContentLoaded', () => {
-
-      const CONFIG = {
-        hargaChekiPerMember: 25000,
-        hargaChekiGrup: 30000
-      };
-
-      const memberProfiles = {
-        'Yan Yee':{hadir:true,image:'foto/yanyee.jpg',name:'Yan Yee 🌸',description:'"Datang bagaikan bunga sakura yang bermekaran di musim semi, haloo semuaa aku Yan Yee!"',details:{'Tanggal Lahir':'22 November','Hobi':'Makeup, dance','Instagram':'@ho_yan.yee'},gallery:['foto/yanyee.jpg','foto/yanyee2.jpg']},
-        'Sinta':{hadir:true,image:'foto/sinta.jpg',name:'Sinta 💚',description:'"Si pemalu tetapi suka hal-hal baru, haloo aku Sintaa"',details:{'Tanggal Lahir':'12 Oktober','Hobi':'Memasak, menyanyi, menari, nonton anime, tidur','Instagram':'@sii_ntaa'},gallery:['foto/sinta.jpg','foto/sinta2.jpg']},
-        'Cissi':{hadir:false,image:'foto/cissi.jpg',name:'Cissi 🦋',description:'"Aiyaiya, i\'m your little butterfly~ Kupu-kupu yang suka menari dan bisa membuatmu bahagia, halo halo semuanya aku Cissi"',details:{'Tanggal Lahir':'22 Agustus','Hobi':'Dance dan melamun','Instagram':'@bakedciz'},gallery:['foto/cissi.jpg','foto/cissi2.jpg']},
-        'Channie':{hadir:true,image:'foto/channie.jpg',name:'Channie ✨',description:'"Semungil bintang yang akan menerangi hatimu seperti bulan, halo semuanya aku Channie!"',details:{'Tanggal Lahir':'8 September','Hobi':'Dance, bikin koreo, nulis, makan gorengan','Instagram':'@zzuchannie'},gallery:['foto/channie.jpg', 'foto/channie2.jpg']},
-        'Acaa':{hadir:true,image:'foto/aca.jpg',name:'Acaa 🧡',description:'"Citcitcutcuit dengarlah kicauanku yang akan meramaikan hatimuuu"',details:{'Tanggal Lahir':'25 Agustus','Hobi':'Nyanyi, turu, main emel, berak, repeat','Instagram':'@caafoxy'},gallery:['foto/aca.jpg', 'foto/aca2.jpg']},
-        'Ayaya':{hadir:true,image:'https://placehold.co/400x300/c3e3a3/079108?text=Ayaya',name:'Ayaya ❓',description:'Misteri yang akan segera terungkap.',details:{'Status':'Informasi akan datang','Pesan':'Tunggu kehadiranku!'},gallery:['https://placehold.co/400x300/c3e3a3/079108?text=Ayaya', 'https://placehold.co/400x400/A9A9A9/FFFFFF?text=Secret']},
-        'Refresh Breeze (Group)':{image:'foto/group.jpg',name:'Refresh Breeze',description:'Grup idola asal Tulungagung yang siap membawa hembusan angin segar untukmu!',details:{'Asal':'Tulungagung, Jawa Timur','Slogan':'Kompak, Ceria, Menyegarkan!','Debut':'2025'},gallery:['foto/group.jpg', 'foto/group2.jpg']}
-      };
-      
-      let cart = [];
-      const cartIconContainer = document.getElementById('cart-icon-container');
-      const cartCount = document.getElementById('cart-count');
-      const addToCartButtons = document.querySelectorAll('.btn-cart');
-      const cartModal = document.getElementById('cartModal');
-      const closeCartModal = document.getElementById('closeCartModal');
-      const modalCartContainer = document.getElementById('modal-cart-container');
-      const modalCartTotalPrice = document.getElementById('modal-cart-total-price');
-      const checkoutButton = document.getElementById('checkout-button');
-      const staticCartContainer = document.getElementById('static-cart-container');
-      const staticCartTotalPrice = document.getElementById('static-cart-total-price');
-      const lineupContainer = document.getElementById('lineup-container');
-
-      function setPrices() {
-        document.getElementById('display-price-member').textContent = `Rp. ${CONFIG.hargaChekiPerMember.toLocaleString('id-ID')}`;
-        document.getElementById('display-price-group').textContent = `Rp. ${CONFIG.hargaChekiGrup.toLocaleString('id-ID')}`;
-        addToCartButtons.forEach(button => {
-          button.dataset.price = (button.dataset.id === 'group') ? CONFIG.hargaChekiGrup : CONFIG.hargaChekiPerMember;
-        });
-      }
-
-      function generateLineup() {
-        if (!lineupContainer) return;
-        lineupContainer.innerHTML = '';
-        for (const memberName in memberProfiles) {
-            if (memberName === 'Refresh Breeze (Group)') continue;
-            const member = memberProfiles[memberName];
-            if (!member || !member.name) continue;
-            const isHadir = member.hadir;
-            const statusClass = isHadir ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-            const iconClass = isHadir ? 'fas fa-check-circle' : 'fas fa-times-circle';
-            const simpleName = member.name;
-            const lineupHTML = `<div class="p-3 rounded-lg ${statusClass} flex items-center justify-center gap-2"><i class="${iconClass}"></i><span class="font-semibold">${simpleName}</span></div>`;
-            lineupContainer.innerHTML += lineupHTML;
-        }
-      }
-
-      function updateCart() {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartCount.textContent = totalItems;
-        const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const formattedTotal = `Rp. ${totalPrice.toLocaleString('id-ID')}`;
-        modalCartTotalPrice.textContent = formattedTotal;
-        staticCartTotalPrice.textContent = formattedTotal;
-        renderCartItems();
-      }
-
-      function renderCartItems() {
-        let generatedHTML = '';
-        if (cart.length === 0) {
-            generatedHTML = `<div class="text-center py-8 text-gray-400"><i class="fas fa-shopping-cart fa-3x mb-4"></i><p class="font-medium">Keranjang Anda kosong</p></div>`;
-        } else {
-            cart.forEach((item, index) => {
-                generatedHTML += `
+            function renderCartItems() {
+                let generatedHTML = '';
+                if (cart.length === 0) {
+                    generatedHTML = `<div class="text-center py-8 text-gray-400"><i class="fas fa-shopping-cart fa-3x mb-4"></i><p class="font-medium">Keranjang Anda kosong</p></div>`;
+                } else {
+                    cart.forEach((item, index) => {
+                        generatedHTML += `
                     <div class="flex justify-between items-center border-b pb-2">
                         <div>
                             <p class="font-semibold">${item.name}</p>
@@ -427,195 +544,196 @@
                         </div>
                     </div>
                 `;
-            });
-        }
-        modalCartContainer.innerHTML = generatedHTML;
-        staticCartContainer.innerHTML = generatedHTML;
-        addCartActionListeners();
-      }
-      
-      function addCartActionListeners() {
-          document.querySelectorAll('.remove-from-cart').forEach(b => b.addEventListener('click', e => removeFromCart(parseInt(e.currentTarget.dataset.index))));
-          document.querySelectorAll('.cart-quantity-btn').forEach(b => {
-            b.addEventListener('click', e => {
-                const index = parseInt(e.currentTarget.dataset.index);
-                const action = e.currentTarget.dataset.action;
-                if (action === 'increase') cart[index].quantity++;
-                else if (action === 'decrease') {
-                    if (cart[index].quantity > 1) cart[index].quantity--;
-                    else removeFromCart(index);
+                    });
                 }
-                updateCart();
-            });
-          });
-      }
-      
-      function removeFromCart(index) {
-        cart.splice(index, 1);
-        updateCart();
-      }
+                modalCartContainer.innerHTML = generatedHTML;
+                staticCartContainer.innerHTML = generatedHTML;
+                addCartActionListeners();
+            }
 
-      addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const id = button.dataset.id;
-          const name = button.dataset.name;
-          const price = parseInt(button.dataset.price);
-          const existingItem = cart.find(item => item.id === id);
-          if (existingItem) existingItem.quantity++;
-          else cart.push({ id, name, price, quantity: 1 });
-          Swal.fire({
-            toast: true, position: 'top-end', icon: 'success', title: `${name} ditambahkan!`,
-            showConfirmButton: false, timer: 2000, timerProgressBar: true,
-          });
-          updateCart();
-        });
-      });
-
-      const profileModal = document.getElementById('profileModal');
-      const closeProfileModal = document.getElementById('closeProfileModal');
-      const modalImg = document.getElementById('modal-img');
-      const modalName = document.getElementById('modal-name');
-      const modalDescription = document.getElementById('modal-description');
-      const modalDetails = document.getElementById('modal-details');
-      const modalGallery = document.getElementById('modal-gallery');
-      const viewProfileButtons = document.querySelectorAll('.btn-profile');
-
-      function openProfileModal(memberName) {
-        const profile = memberProfiles[memberName];
-        if (!profile) return;
-        modalImg.src = profile.image;
-        modalName.textContent = profile.name;
-        modalDescription.textContent = profile.description;
-        modalDetails.innerHTML = '';
-        for (const [key, value] of Object.entries(profile.details)) {
-          modalDetails.innerHTML += `<p><strong class="text-custom-green">${key}:</strong> ${value}</p>`;
-        }
-        modalGallery.innerHTML = '';
-        if (profile.gallery && profile.gallery.length > 0) { 
-            profile.gallery.forEach(imgSrc => {
-                const thumb = document.createElement('img');
-                thumb.src = imgSrc;
-                thumb.className = 'w-16 h-16 rounded-md object-cover cursor-pointer border-2 border-transparent hover:border-custom-green';
-                thumb.onclick = () => { modalImg.src = imgSrc; };
-                modalGallery.appendChild(thumb);
-            });
-        }
-        profileModal.classList.remove('hidden');
-      }
-
-      viewProfileButtons.forEach(b => b.addEventListener('click', e => openProfileModal(e.currentTarget.dataset.name)));
-      closeProfileModal.addEventListener('click', () => profileModal.classList.add('hidden'));
-      cartIconContainer.addEventListener('click', () => cartModal.classList.remove('hidden'));
-      closeCartModal.addEventListener('click', () => cartModal.classList.add('hidden'));
-      checkoutButton.addEventListener('click', () => {
-        cartModal.classList.add('hidden');
-        document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
-      });
-      document.getElementById('mobile-menu-button').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-      document.querySelectorAll('.nav-link').forEach(link => {
-          link.addEventListener('click', (e) => {
-              const targetId = e.currentTarget.getAttribute('href');
-              if (targetId.startsWith('#')) {
-                  e.preventDefault();
-                  document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-                  if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
-                      document.getElementById('mobile-menu').classList.add('hidden');
-                  }
-              }
-          });
-      });
-      
-      const checkoutForm = document.getElementById('checkout-form');
-      checkoutForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const whatsapp = document.getElementById('whatsapp').value;
-        const email = document.getElementById('email').value;
-        const instagram = document.getElementById('instagram').value;
-        const paymentProofFile = document.getElementById('payment-proof').files[0];
-        
-        if (cart.length === 0) {
-          Swal.fire({ icon: 'error', title: 'Oops...', text: 'Keranjang Anda kosong!', confirmButtonColor: '#079108' });
-          return;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          Swal.fire({ icon: 'error', title: 'Format Email Salah', text: 'Mohon masukkan alamat email yang valid.', confirmButtonColor: '#079108' });
-          return;
-        }
-        if (!paymentProofFile) {
-            Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Harap upload bukti pembayaran Anda.', confirmButtonColor: '#079108' });
-            return;
-        }
-
-        const submitBtn = document.getElementById('submit-button');
-        const btnText = document.getElementById('submit-button-text');
-        const spinner = document.getElementById('submit-spinner');
-        submitBtn.disabled = true;
-        btnText.classList.add('hidden');
-        spinner.classList.remove('hidden');
-
-        const reader = new FileReader();
-        reader.readAsDataURL(paymentProofFile);
-        reader.onloadend = () => {
-            const fileBase64 = reader.result.split(',')[1];
-            
-            const itemsSummary = cart.map(item => `${item.name} (x${item.quantity})`).join('\n');
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            const payload = {
-                nama: name, 
-                whatsapp: whatsapp,
-                email: email,
-                instagram: instagram,
-                items: itemsSummary,
-                total: total,
-                fileBase64: fileBase64,
-                fileType: paymentProofFile.type,
-            };
-
-            fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            })
-            .then(res => res.json())
-            .then(data => {
-                 submitBtn.disabled = false;
-                 btnText.classList.remove('hidden');
-                 spinner.classList.add('hidden');
-                 
-                 if (data.status === 'success') {
-                    Swal.fire({
-                        icon: 'success', title: 'Pesanan Terkirim!',
-                        text: `Terima kasih, ${name}! Konfirmasi pesanan telah dikirim ke email Anda.`,
-                        confirmButtonText: 'Selesai', confirmButtonColor: '#079108'
-                    }).then(() => {
-                        checkoutForm.reset();
-                        cart = [];
+            function addCartActionListeners() {
+                document.querySelectorAll('.remove-from-cart').forEach(b => b.addEventListener('click', e => removeFromCart(parseInt(e.currentTarget.dataset.index))));
+                document.querySelectorAll('.cart-quantity-btn').forEach(b => {
+                    b.addEventListener('click', e => {
+                        const index = parseInt(e.currentTarget.dataset.index);
+                        const action = e.currentTarget.dataset.action;
+                        if (action === 'increase') cart[index].quantity++;
+                        else if (action === 'decrease') {
+                            if (cart[index].quantity > 1) cart[index].quantity--;
+                            else removeFromCart(index);
+                        }
                         updateCart();
                     });
-                 } else {
-                     throw new Error(data.message || 'Terjadi kesalahan yang tidak diketahui.');
-                 }
-            })
-            .catch(error => {
-                submitBtn.disabled = false;
-                btnText.classList.remove('hidden');
-                spinner.classList.add('hidden');
-                Swal.fire({
-                    icon: 'error', title: 'Gagal Mengirim',
-                    text: 'Terjadi masalah saat mengirim pesanan Anda. Pastikan ID dan URL di backend sudah benar. Error: ' + error.message,
-                    confirmButtonColor: '#079108'
+                });
+            }
+
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                updateCart();
+            }
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const name = button.dataset.name;
+                    const price = parseInt(button.dataset.price);
+                    const existingItem = cart.find(item => item.id === id);
+                    if (existingItem) existingItem.quantity++;
+                    else cart.push({ id, name, price, quantity: 1 });
+                    Swal.fire({
+                        toast: true, position: 'top-end', icon: 'success', title: `${name} ditambahkan!`,
+                        showConfirmButton: false, timer: 2000, timerProgressBar: true,
+                    });
+                    updateCart();
                 });
             });
-        };
-      });
-      
-      setPrices();
-      updateCart();
-      generateLineup();
-    });
-  </script>
+
+            const profileModal = document.getElementById('profileModal');
+            const closeProfileModal = document.getElementById('closeProfileModal');
+            const modalImg = document.getElementById('modal-img');
+            const modalName = document.getElementById('modal-name');
+            const modalDescription = document.getElementById('modal-description');
+            const modalDetails = document.getElementById('modal-details');
+            const modalGallery = document.getElementById('modal-gallery');
+            const viewProfileButtons = document.querySelectorAll('.btn-profile');
+
+            function openProfileModal(memberName) {
+                const profile = memberProfiles[memberName];
+                if (!profile) return;
+                modalImg.src = profile.image;
+                modalName.textContent = profile.name;
+                modalDescription.textContent = profile.description;
+                modalDetails.innerHTML = '';
+                for (const [key, value] of Object.entries(profile.details)) {
+                    modalDetails.innerHTML += `<p><strong class="text-custom-green">${key}:</strong> ${value}</p>`;
+                }
+                modalGallery.innerHTML = '';
+                if (profile.gallery && profile.gallery.length > 0) {
+                    profile.gallery.forEach(imgSrc => {
+                        const thumb = document.createElement('img');
+                        thumb.src = imgSrc;
+                        thumb.className = 'w-16 h-16 rounded-md object-cover cursor-pointer border-2 border-transparent hover:border-custom-green';
+                        thumb.onclick = () => { modalImg.src = imgSrc; };
+                        modalGallery.appendChild(thumb);
+                    });
+                }
+                profileModal.classList.remove('hidden');
+            }
+
+            viewProfileButtons.forEach(b => b.addEventListener('click', e => openProfileModal(e.currentTarget.dataset.name)));
+            closeProfileModal.addEventListener('click', () => profileModal.classList.add('hidden'));
+            cartIconContainer.addEventListener('click', () => cartModal.classList.remove('hidden'));
+            closeCartModal.addEventListener('click', () => cartModal.classList.add('hidden'));
+            checkoutButton.addEventListener('click', () => {
+                cartModal.classList.add('hidden');
+                document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
+            });
+            document.getElementById('mobile-menu-button').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = e.currentTarget.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                        if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                            document.getElementById('mobile-menu').classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            const checkoutForm = document.getElementById('checkout-form');
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const whatsapp = document.getElementById('whatsapp').value;
+                const email = document.getElementById('email').value;
+                const instagram = document.getElementById('instagram').value;
+                const paymentProofFile = document.getElementById('payment-proof').files[0];
+
+                if (cart.length === 0) {
+                    Swal.fire({ icon: 'error', title: 'Oops...', text: 'Keranjang Anda kosong!', confirmButtonColor: '#079108' });
+                    return;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    Swal.fire({ icon: 'error', title: 'Format Email Salah', text: 'Mohon masukkan alamat email yang valid.', confirmButtonColor: '#079108' });
+                    return;
+                }
+                if (!paymentProofFile) {
+                    Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Harap upload bukti pembayaran Anda.', confirmButtonColor: '#079108' });
+                    return;
+                }
+
+                const submitBtn = document.getElementById('submit-button');
+                const btnText = document.getElementById('submit-button-text');
+                const spinner = document.getElementById('submit-spinner');
+                submitBtn.disabled = true;
+                btnText.classList.add('hidden');
+                spinner.classList.remove('hidden');
+
+                const reader = new FileReader();
+                reader.readAsDataURL(paymentProofFile);
+                reader.onloadend = () => {
+                    const fileBase64 = reader.result.split(',')[1];
+
+                    const itemsSummary = cart.map(item => `${item.name} (x${item.quantity})`).join('\n');
+                    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                    const payload = {
+                        nama: name,
+                        whatsapp: whatsapp,
+                        email: email,
+                        instagram: instagram,
+                        items: itemsSummary,
+                        total: total,
+                        fileBase64: fileBase64,
+                        fileType: paymentProofFile.type,
+                    };
+
+                    fetch(scriptURL, {
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            submitBtn.disabled = false;
+                            btnText.classList.remove('hidden');
+                            spinner.classList.add('hidden');
+
+                            if (data.status === 'success') {
+                                Swal.fire({
+                                    icon: 'success', title: 'Pesanan Terkirim!',
+                                    text: `Terima kasih, ${name}! Konfirmasi pesanan telah dikirim ke email Anda.`,
+                                    confirmButtonText: 'Selesai', confirmButtonColor: '#079108'
+                                }).then(() => {
+                                    checkoutForm.reset();
+                                    cart = [];
+                                    updateCart();
+                                });
+                            } else {
+                                throw new Error(data.message || 'Terjadi kesalahan yang tidak diketahui.');
+                            }
+                        })
+                        .catch(error => {
+                            submitBtn.disabled = false;
+                            btnText.classList.remove('hidden');
+                            spinner.classList.add('hidden');
+                            Swal.fire({
+                                icon: 'error', title: 'Gagal Mengirim',
+                                text: 'Terjadi masalah saat mengirim pesanan Anda. Pastikan ID dan URL di backend sudah benar. Error: ' + error.message,
+                                confirmButtonColor: '#079108'
+                            });
+                        });
+                };
+            });
+
+            setPrices();
+            updateCart();
+            generateLineup();
+        });
+    </script>
 
 </body>
+
 </html>
