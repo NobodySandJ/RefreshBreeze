@@ -1,0 +1,11 @@
+html { 
+  scroll-behavior: smooth; 
+}
+body { 
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden; 
+}
+.bg-custom-mint { background-color: #c3e3a3; }
+.text-custom-green { color: #079108; }
+.bg-custom-green { background-color: #079108; }
+.text-custom-sage { color: #b8dfd8; }

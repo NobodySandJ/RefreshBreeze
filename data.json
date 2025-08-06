@@ -1,0 +1,156 @@
+{
+  "config": {
+    "hargaChekiPerMember": 25000,
+    "hargaChekiGrup": 30000,
+    "paymentInfo": {
+      "bank": "BCA",
+      "rekening": "8162015779",
+      "atasNama": "Reyhan Alfa Sukmajati"
+    },
+    "googleScriptURL": "https://script.google.com/macros/s/AKfycbzVPK2taEAskA-VEpPWKo8tKU3wF_xXr_FADt4JNVsRQUkiyPucmSs6W8GM3gA-fK8P/exec"
+  },
+  "members": [
+    {
+      "id": "yanyee",
+      "namaPanggung": "Yan Yee 🌸",
+      "tagline": "Anggun, Hangat, Cerah",
+      "hadir": true,
+      "image": "foto/yanyee.jpg",
+      "jiko": "\"Datang bagaikan bunga sakura yang bermekaran di musim semi, haloo semuaa aku Yan Yee!\"",
+      "details": {
+        "Tanggal Lahir": "22 November",
+        "Hobi": "Makeup, dance",
+        "Instagram": "@ho_yan.yee"
+      },
+      "gallery": ["foto/yanyee.jpg", "foto/yanyee2.jpg"]
+    },
+    {
+      "id": "sinta",
+      "namaPanggung": "Sinta 💚",
+      "tagline": "Pemalu, Penasaran",
+      "hadir": true,
+      "image": "foto/sinta.jpg",
+      "jiko": "\"Si pemalu tetapi suka hal-hal baru, haloo aku Sintaa\"",
+      "details": {
+        "Tanggal Lahir": "12 Oktober",
+        "Hobi": "Memasak, menyanyi, menari, nonton anime, tidur",
+        "Instagram": "@sii_ntaa"
+      },
+      "gallery": ["foto/sinta.jpg", "foto/sinta2.jpg"]
+    },
+    {
+      "id": "cissi",
+      "namaPanggung": "Cissi 🦋",
+      "tagline": "Imajinatif, Penari",
+      "hadir": false,
+      "image": "foto/cissi.jpg",
+      "jiko": "\"Aiyaiya, i'm your little butterfly~ Kupu-kupu yang suka menari dan bisa membuatmu bahagia, halo halo semuanya aku Cissi\"",
+      "details": {
+        "Tanggal Lahir": "22 Agustus",
+        "Hobi": "Dance dan melamun",
+        "Instagram": "@bakedciz"
+      },
+      "gallery": ["foto/cissi.jpg", "foto/cissi2.jpg"]
+    },
+    {
+      "id": "channie",
+      "namaPanggung": "Channie ✨",
+      "tagline": "Kreatif, Menghibur",
+      "hadir": true,
+      "image": "foto/channie.jpg",
+      "jiko": "\"Semungil bintang yang akan menerangi hatimu seperti bulan, halo semuanya aku Channie!\"",
+      "details": {
+        "Tanggal Lahir": "8 September",
+        "Hobi": "Dance, bikin koreo, nulis, makan gorengan",
+        "Instagram": "@zzuchannie"
+      },
+      "gallery": ["foto/channie.jpg", "foto/channie2.jpg"]
+    },
+    {
+      "id": "acaa",
+      "namaPanggung": "Acaa 🧡",
+      "tagline": "Ceria, Usil, Lincah",
+      "hadir": true,
+      "image": "foto/aca.jpg",
+      "jiko": "\"Citcitcutcuit dengarlah kicauanku yang akan meramaikan hatimuuu\"",
+      "details": {
+        "Tanggal Lahir": "25 Agustus",
+        "Hobi": "Nyanyi, turu, main emel, berak, repeat",
+        "Instagram": "@caafoxy"
+      },
+      "gallery": ["foto/aca.jpg", "foto/aca2.jpg"]
+    },
+    {
+      "id": "ayaya",
+      "namaPanggung": "Ayaya ❓",
+      "tagline": "Belum diketahui",
+      "hadir": true,
+      "image": "https://placehold.co/400x300/c3e3a3/079108?text=Ayaya",
+      "jiko": "Misteri yang akan segera terungkap.",
+      "details": {
+        "Status": "Informasi akan datang",
+        "Pesan": "Tunggu kehadiranku!"
+      },
+      "gallery": ["https://placehold.co/400x300/c3e3a3/079108?text=Ayaya", "https://placehold.co/400x400/A9A9A9/FFFFFF?text=Secret"]
+    },
+    {
+      "id": "group",
+      "namaPanggung": "Group",
+      "tagline": "Kompak & Ceria",
+      "hadir": true,
+      "image": "foto/group.jpg",
+      "jiko": "Grup idola asal Tulungagung yang siap membawa hembusan angin segar untukmu!",
+      "details": {
+        "Asal": "Tulungagung, Jawa Timur",
+        "Slogan": "Kompak, Ceria, Menyegarkan!",
+        "Debut": "2025"
+      },
+      "gallery": ["foto/group.jpg", "foto/group2.jpg"]
+    }
+  ],
+  "events": [
+    {
+      "tanggal": "25",
+      "bulan": "JUL",
+      "tahun": "2025",
+      "nama": "Japan Fest Tulungagung",
+      "lokasi": "GOR Lembu Peteng, Tulungagung"
+    },
+    {
+      "tanggal": "17",
+      "bulan": "AGU",
+      "tahun": "2025",
+      "nama": "Malang Anime Day",
+      "lokasi": "Malang Creative Center, Malang"
+    },
+    {
+      "tanggal": "30",
+      "bulan": "SEP",
+      "tahun": "2025",
+      "nama": "Surabaya Cosplay Convention",
+      "lokasi": "Tunjungan Plaza Convention Hall, Surabaya"
+    }
+  ],
+  "faqs": [
+    {
+      "tanya": "Bagaimana cara memesan Cheki?",
+      "jawab": "Pilih Cheki member yang Anda inginkan, klik 'Add', lalu scroll ke bawah ke bagian 'Keranjang Anda' dan 'Detail Pemesanan' untuk mengisi data diri dan mengunggah bukti transfer."
+    },
+    {
+      "tanya": "Apa saja metode pembayaran yang diterima?",
+      "jawab": "Saat ini kami hanya menerima pembayaran melalui transfer bank ke rekening BCA yang tertera di bagian 'Notes Pembayaran'."
+    },
+    {
+      "tanya": "Apa itu Cheki?",
+      "jawab": "Cheki adalah sesi foto instan (mirip Polaroid) bersama member idola pilihan Anda. Ini adalah kesempatan untuk mendapatkan kenang-kenangan eksklusif langsung dengan oshi Anda di event."
+    },
+    {
+      "tanya": "Bagaimana jika saya sudah membayar tapi batal datang?",
+      "jawab": "Jika Anda sudah melakukan Pre-Order (PO) tetapi tidak bisa datang, mohon segera konfirmasi ulang kepada kami melalui Direct Message (DM) Instagram Refresh Breeze untuk penanganan lebih lanjut."
+    },
+    {
+      "tanya": "Setelah checkout berhasil, apa langkah selanjutnya?",
+      "jawab": "Anda akan menerima email konfirmasi otomatis. Simpan email tersebut. Saat hari event, datang ke booth kami dan tunjukkan bukti email atau data diri Anda untuk menukarkannya dengan tiket Cheki fisik."
+    }
+  ]
+}
