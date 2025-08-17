@@ -139,11 +139,11 @@ document.addEventListener('DOMContentLoaded', function () {
             tr.innerHTML = `
                 <td>${!isNaN(displayDate) ? displayDate.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }) : 'Invalid Date'}</td>
                 <td>${row.Nama || ''}</td>
-                <td>${row.email || ''}</td>
-                <td>${row.whatsapp || ''}</td>
-                <td class="whitespace-pre-wrap">${row.items || ''}</td>
-                <td>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(row.total || 0)}</td>
-                <td><a href="${row.bukti || '#'}" target="_blank" class="text-blue-600 hover:underline">Lihat Bukti</a></td>
+                <td>${row.Email || ''}</td>
+                <td>${row.Whatsapp || ''}</td>
+                <td class="whitespace-pre-wrap">${row.Items || ''}</td>
+                <td>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(row.Total || 0)}</td>
+                <td><a href="${row.Linkbuktibayar || '#'}" target="_blank" class="text-blue-600 hover:underline">Lihat Bukti</a></td>
             `;
             ordersTbody.appendChild(tr);
         });
