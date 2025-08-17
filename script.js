@@ -62,7 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
         allData.members.forEach(member => {
             const isGroup = member.id === 'group';
             const price = isGroup ? allData.config.hargaChekiGrup : allData.config.hargaChekiPerMember;
-            const chekiName = isGroup ? `Cheki All Member` : `Cheki ${member.namaPanggung.split(' ')[0]}`;
+            
+            // ==========================================================
+            // || PERBAIKAN 1: Mengambil dua kata pertama dari nama      ||
+            // ==========================================================
+            const chekiName = isGroup 
+                ? `Cheki All Member` 
+                : `Cheki ${member.namaPanggung.split(' ').slice(0, 2).join(' ')}`;
 
             const memberCard = `
                 <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform transform hover:-translate-y-2 border border-gray-200">
@@ -288,7 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LOGIKA FORM ---
     function handleFormSubmit(e) {
         e.preventDefault();
-        const scriptURL = allData.config.googleScriptURL;
+        
+        // =======================================================================
+        // || PERBAIKAN 2: URL Google Script dihapus dari sini demi keamanan    ||
+        // =======================================================================
+        // const scriptURL = allData.config.googleScriptURL; // Baris ini tidak lagi diperlukan
 
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
@@ -329,14 +339,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 fileType: paymentProofFile.type,
             };
 
-            fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
+            // =======================================================================
+            // || PERBAIKAN 2: Mengirim data ke Serverless Function di Vercel       ||
+            // =======================================================================
+            fetch('/api/submit-form', { 
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload) 
+            })
             .then(res => res.json())
             .then(data => {
                 submitBtn.disabled = false;
                 btnText.classList.remove('hidden');
                 spinner.classList.add('hidden');
                  
-                // PERUBAHAN SATU KATA DI SINI
                 if (data.result === 'success') {
                     Swal.fire({
                         icon: 'success', title: 'Pesanan Terkirim!',
@@ -386,5 +404,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2000);
         });
     }
-
 });
