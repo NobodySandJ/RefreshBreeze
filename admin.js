@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // || FUNGSI UTAMA (LOGIN, FETCH, DLL)                            ||
     // =================================================================
 
+    // Fungsi untuk menampilkan/menyembunyikan password
     if (togglePasswordButton) {
         togglePasswordButton.addEventListener('click', function () {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -39,10 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Cek status login saat halaman dimuat
     if (sessionStorage.getItem('isRbAdminAuthenticated') === 'true') {
         showDashboard();
     }
 
+    // Handler untuk form login
     loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
         const username = document.getElementById('username').value;
@@ -56,11 +59,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Handler untuk logout
     logoutButton.addEventListener('click', () => {
         sessionStorage.removeItem('isRbAdminAuthenticated');
         showLogin();
     });
 
+    // Handler untuk refresh data
     refreshButton.addEventListener('click', fetchData);
 
     function showDashboard() {
@@ -74,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         adminDashboard.classList.add('hidden');
     }
 
+    // Fungsi untuk mengambil data dari Google Sheet menggunakan metode JSONP
     function fetchData() {
         loader.style.display = 'block';
         ordersTable.classList.add('hidden');
@@ -82,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const callbackName = 'jsonp_callback_rb_' + Math.round(100000 * Math.random());
         window[callbackName] = function (data) {
             handleDataResponse(data);
+            // Cleanup
             delete window[callbackName];
             const scriptElement = document.getElementById(callbackName);
             if (scriptElement) {
@@ -94,8 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
         script.src = `${SCRIPT_URL}?action=getOrders&apiKey=${API_KEY}&callback=${callbackName}`;
 
         script.onerror = function () {
-            loader.innerHTML = `<p class="text-red-500">Gagal memuat data. Periksa URL script dan koneksi Anda.</p>`;
+            loader.innerHTML = `<p class="text-red-400">Gagal memuat data. Periksa URL script dan koneksi Anda.</p>`;
             ordersTable.classList.add('hidden');
+            // Cleanup
             delete window[callbackName];
             const scriptElement = document.getElementById(callbackName);
             if (scriptElement) {
@@ -110,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (data.error) {
             loader.style.display = 'block';
-            loader.innerHTML = `<p class="text-red-500">Error dari server: ${data.error}</p>`;
+            loader.innerHTML = `<p class="text-red-400">Error dari server: ${data.error}</p>`;
             return;
         }
 
@@ -126,25 +134,30 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderTable(data) {
         ordersTbody.innerHTML = '';
         if (!data || data.length === 0) {
-            ordersTbody.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-gray-500">Belum ada pesanan.</td></tr>';
+            ordersTbody.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-gray-400">Belum ada pesanan.</td></tr>';
             return;
         }
 
+        // Fungsi untuk parsing tanggal yang lebih robust
         const parseDate = (dateString) => {
             if (!dateString) return null;
+            // Mencoba format DD/MM/YYYY HH:mm:ss
             const parts = dateString.match(/(\d{1,2})\/(\d{1,2})\/(\d{4}) (\d{1,2}):(\d{1,2}):(\d{1,2})/);
             if (parts) {
+                // new Date(year, monthIndex, day, hours, minutes, seconds)
                 return new Date(parts[3], parts[2] - 1, parts[1], parts[4], parts[5], parts[6]);
             }
+            // Fallback ke parser standar jika format tidak cocok
             const date = new Date(dateString);
             return !isNaN(date) ? date : null;
         };
 
+        // Urutkan data berdasarkan timestamp terbaru
         const sortedData = data.sort((a, b) => {
             const dateA = parseDate(a.Timestamp);
             const dateB = parseDate(b.Timestamp);
             if (dateA && dateB) {
-                return dateB - dateA;
+                return dateB - dateA; // Urutan descending (terbaru dulu)
             }
             return 0;
         });
@@ -160,47 +173,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td class="px-4 py-2 text-sm">${row.Whatsapp || ''}</td>
                 <td class="px-4 py-2 text-sm whitespace-pre-wrap">${row.Items || ''}</td>
                 <td class="px-4 py-2 text-sm">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(row.Total || 0)}</td>
-                <td class="px-4 py-2 text-sm"><a href="${row.Buktibayar || '#'}" target="_blank" class="text-blue-600 hover:underline">Lihat Bukti</a></td>
+                <td class="px-4 py-2 text-sm"><a href="${row.Buktibayar || '#'}" target="_blank" class="text-blue-400 hover:underline">Lihat Bukti</a></td>
             `;
             ordersTbody.appendChild(tr);
         });
     }
 
     function calculateSummary(data) {
-        const totalRevenue = data.reduce((sum, row) => sum + parseFloat(row.Total || 0), 0);
-        totalRevenueEl.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(totalRevenue);
+    // Kalkulasi Total Pendapatan
+    const totalRevenue = data.reduce((sum, row) => sum + parseFloat(row.Total || 0), 0);
+    totalRevenueEl.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(totalRevenue);
 
-        const memberCounts = {
-            'Yan Yee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0, 'All Member': 0
-        };
-        const memberNames = Object.keys(memberCounts);
+    // Kalkulasi Penjualan per Member
+    const memberCounts = {
+        'Yan Yee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0, 'All Member': 0
+    };
+    const memberNames = Object.keys(memberCounts);
 
-        // =============================================================
-        // || PERBAIKAN FINAL DI SINI                                 ||
-        // || Mengganti ' ' (spasi biasa) dengan '\\s*' (semua jenis spasi) ||
-        // =============================================================
-        const chekiRegex = new RegExp(`Cheki (${memberNames.join('|')})\\s*\\(x(\\d+)\\)`, 'g');
+    // =============================================================
+    // || PERBAIKAN DI SINI                                       ||
+    // || Regex diubah agar lebih fleksibel terhadap emoji/karakter lain ||
+    // =============================================================
+    const chekiRegex = new RegExp(`Cheki (${memberNames.join('|')}).*?\\(x(\\d+)\\)`, 'g');
 
-        data.forEach(row => {
-            const pesanan = row.Items || '';
-            const matches = pesanan.matchAll(chekiRegex);
-            for (const match of matches) {
-                const memberName = match[1];
-                const quantity = parseInt(match[2], 10);
-                if (memberCounts.hasOwnProperty(memberName)) {
-                    memberCounts[memberName] += quantity;
-                }
+    data.forEach(row => {
+        const pesanan = row.Items || '';
+        const matches = pesanan.matchAll(chekiRegex);
+        for (const match of matches) {
+            const memberName = match[1].trim(); // Menggunakan trim untuk jaga-jaga
+            const quantity = parseInt(match[2], 10);
+            if (memberCounts.hasOwnProperty(memberName)) {
+                memberCounts[memberName] += quantity;
             }
-        });
-
-        memberSummaryEl.innerHTML = '';
-        for (const member in memberCounts) {
-            memberSummaryEl.innerHTML += `
-                <div class="text-center p-2 bg-white rounded-lg border">
-                    <p class="font-semibold text-gray-700">${member}</p>
-                    <p class="text-xl font-bold text-green-700">${memberCounts[member]}</p>
-                </div>
-            `;
         }
+    });
+
+    memberSummaryEl.innerHTML = '';
+    for (const member in memberCounts) {
+        memberSummaryEl.innerHTML += `
+            <div>
+                <p class="font-semibold text-gray-700">${member}</p>
+                <p class="text-2xl font-bold text-green-800">${memberCounts[member]}</p>
+            </div>
+        `;
     }
+}
 });
