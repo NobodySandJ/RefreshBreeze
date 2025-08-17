@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // =================================================================
     // || KONFIGURASI ADMIN (SESUAIKAN DENGAN MILIK ANDA)             ||
     // =================================================================
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVPK2taEAskA-VEpPWKo8tKU3wF_xXr_FADt4JNVsRQUkiyPucmSs6W8GM3gA-fK8P/exec";
-    const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1aRadOkKvXtHYPirKhaqHovZ78WjemnDGi15OOd4ZxyM/edit";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxy8zZxX4s7AlvQ9NfBv4D_imH-z4BtIRUhYUbTLioJZMqjKPeSwpHkxRwVJQaPHaAF/exec";
     const ADMIN_USER = "adminbreeze";
     const ADMIN_PASS = "segarsejuk";
     const API_KEY = "RefreshBreezeSecretKey";
