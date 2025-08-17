@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // =================================================================
 
     if (togglePasswordButton) {
-        togglePasswordButton.addEventListener('click', function() {
+        togglePasswordButton.addEventListener('click', function () {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
             toggleIcon.classList.toggle('fa-eye');
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
         loader.style.display = 'block';
         ordersTable.classList.add('hidden');
         loader.innerHTML = '<p class="text-lg">Memuat data, mohon tunggu...</p>';
-        
+
         const callbackName = 'jsonp_callback_rb_' + Math.round(100000 * Math.random());
-        window[callbackName] = function(data) {
+        window[callbackName] = function (data) {
             handleDataResponse(data);
             delete window[callbackName];
             const scriptElement = document.getElementById(callbackName);
@@ -92,8 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const script = document.createElement('script');
         script.id = callbackName;
         script.src = `${SCRIPT_URL}?action=getOrders&apiKey=${API_KEY}&callback=${callbackName}`;
-        
-        script.onerror = function() {
+
+        script.onerror = function () {
             loader.innerHTML = `<p class="text-red-500">Gagal memuat data. Periksa URL script dan koneksi Anda.</p>`;
             ordersTable.classList.add('hidden');
             delete window[callbackName];
@@ -104,10 +104,10 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         document.body.appendChild(script);
     }
-    
+
     function handleDataResponse(data) {
         loader.style.display = 'none';
-        
+
         if (data.error) {
             loader.style.display = 'block';
             loader.innerHTML = `<p class="text-red-500">Error dari server: ${data.error}</p>`;
@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderTable(data) {
         ordersTbody.innerHTML = '';
         if (!data || data.length === 0) {
-             ordersTbody.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-gray-500">Belum ada pesanan.</td></tr>';
-             return;
+            ordersTbody.innerHTML = '<tr><td colspan="7" class="text-center py-8 text-gray-500">Belum ada pesanan.</td></tr>';
+            return;
         }
 
         const parseDate = (dateString) => {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sortedData.forEach((row) => {
             const tr = document.createElement('tr');
             const displayDate = parseDate(row.Timestamp);
-            
+
             tr.innerHTML = `
                 <td class="px-4 py-2 text-sm">${displayDate ? displayDate.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }) : 'Tanggal tidak valid'}</td>
                 <td class="px-4 py-2 text-sm">${row.Nama || ''}</td>
@@ -174,15 +174,15 @@ document.addEventListener('DOMContentLoaded', function () {
             'Yan Yee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0, 'All Member': 0
         };
         const memberNames = Object.keys(memberCounts);
-        const chekiRegex = new RegExp(`Cheki (${memberNames.join('|')}) \\(x(\\d+)\\)`, 'g');
+
+        // =============================================================
+        // || PERBAIKAN FINAL DI SINI                                 ||
+        // || Mengganti ' ' (spasi biasa) dengan '\\s*' (semua jenis spasi) ||
+        // =============================================================
+        const chekiRegex = new RegExp(`Cheki (${memberNames.join('|')})\\s*\\(x(\\d+)\\)`, 'g');
 
         data.forEach(row => {
             const pesanan = row.Items || '';
-            
-            // =============================================================
-            // || PERUBAHAN UTAMA DI SINI                                 ||
-            // || Mengganti loop 'while' dengan 'matchAll' yang lebih aman  ||
-            // =============================================================
             const matches = pesanan.matchAll(chekiRegex);
             for (const match of matches) {
                 const memberName = match[1];
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         });
-        
+
         memberSummaryEl.innerHTML = '';
         for (const member in memberCounts) {
             memberSummaryEl.innerHTML += `
