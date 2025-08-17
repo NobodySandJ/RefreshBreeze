@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const togglePasswordButton = document.getElementById('toggle-password');
     const passwordInput = document.getElementById('password');
     const toggleIcon = document.getElementById('toggle-icon');
-    document.getElementById('google-sheet-link').href = "https://docs.google.com/spreadsheets/d/1g_gE-8j2p5x3hI_G5qk4HAbzaOFdO4s8c-1K8gQ2-v0/edit#gid=0"; // Link langsung ke Google Sheet
+    document.getElementById('google-sheet-link').href = "https://docs.google.com/spreadsheets/d/1g_gE-8j2p5x3hI_G5qk4HAbzaOFdO4s8c-1K8gQ2-v0/edit#gid=0";
 
     // =================================================================
     // || FUNGSI UTAMA (LOGIN, FETCH, DLL)                            ||
@@ -79,11 +79,9 @@ document.addEventListener('DOMContentLoaded', function () {
         ordersTable.classList.add('hidden');
         loader.innerHTML = '<p class="text-lg">Memuat data, mohon tunggu...</p>';
         
-        // Menggunakan JSONP untuk mengambil data dari Google Apps Script
         const callbackName = 'jsonp_callback_rb_' + Math.round(100000 * Math.random());
         window[callbackName] = function(data) {
             handleDataResponse(data);
-            // Membersihkan setelah selesai
             delete window[callbackName];
             const scriptElement = document.getElementById(callbackName);
             if (scriptElement) {
@@ -98,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
         script.onerror = function() {
             loader.innerHTML = `<p class="text-red-500">Gagal memuat data. Periksa URL script dan koneksi Anda.</p>`;
             ordersTable.classList.add('hidden');
-            // Membersihkan jika terjadi error
             delete window[callbackName];
             const scriptElement = document.getElementById(callbackName);
             if (scriptElement) {
@@ -123,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // =================================================================
-    // || FUNGSI RENDER TABEL & RINGKASAN (SUDAH DIPERBAIKI)          ||
+    // || FUNGSI RENDER TABEL & RINGKASAN                             ||
     // =================================================================
 
     function renderTable(data) {
@@ -133,21 +130,16 @@ document.addEventListener('DOMContentLoaded', function () {
              return;
         }
 
-        // Fungsi untuk parsing tanggal yang lebih robust
         const parseDate = (dateString) => {
             if (!dateString) return null;
-            // Coba parsing format 'DD/MM/YYYY HH:mm:ss'
             const parts = dateString.match(/(\d{1,2})\/(\d{1,2})\/(\d{4}) (\d{1,2}):(\d{1,2}):(\d{1,2})/);
             if (parts) {
-                // parts[2] - 1 karena bulan di JavaScript dimulai dari 0 (Januari)
                 return new Date(parts[3], parts[2] - 1, parts[1], parts[4], parts[5], parts[6]);
             }
-            // Fallback untuk format lain yang didukung new Date()
             const date = new Date(dateString);
             return !isNaN(date) ? date : null;
         };
 
-        // Mengurutkan data berdasarkan tanggal terbaru
         const sortedData = data.sort((a, b) => {
             const dateA = parseDate(a.Timestamp);
             const dateB = parseDate(b.Timestamp);
@@ -161,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const tr = document.createElement('tr');
             const displayDate = parseDate(row.Timestamp);
             
-            // Menggunakan nama properti yang konsisten (huruf besar di awal)
             tr.innerHTML = `
                 <td class="px-4 py-2 text-sm">${displayDate ? displayDate.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }) : 'Tanggal tidak valid'}</td>
                 <td class="px-4 py-2 text-sm">${row.Nama || ''}</td>
@@ -176,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function calculateSummary(data) {
-        // PERBAIKAN: Menggunakan 'row.Total' (huruf T besar) agar konsisten
         const totalRevenue = data.reduce((sum, row) => sum + parseFloat(row.Total || 0), 0);
         totalRevenueEl.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(totalRevenue);
 
@@ -184,15 +174,17 @@ document.addEventListener('DOMContentLoaded', function () {
             'Yan Yee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0, 'All Member': 0
         };
         const memberNames = Object.keys(memberCounts);
-        // Regex untuk mencari pola "Cheki (Nama Member) (xJumlah)"
         const chekiRegex = new RegExp(`Cheki (${memberNames.join('|')}) \\(x(\\d+)\\)`, 'g');
 
         data.forEach(row => {
-            // PERBAIKAN: Menggunakan 'row.Items' (huruf I besar) agar konsisten
             const pesanan = row.Items || '';
-            let match;
-            // Looping untuk menemukan semua cocok dalam satu string pesanan
-            while ((match = chekiRegex.exec(pesanan)) !== null) {
+            
+            // =============================================================
+            // || PERUBAHAN UTAMA DI SINI                                 ||
+            // || Mengganti loop 'while' dengan 'matchAll' yang lebih aman  ||
+            // =============================================================
+            const matches = pesanan.matchAll(chekiRegex);
+            for (const match of matches) {
                 const memberName = match[1];
                 const quantity = parseInt(match[2], 10);
                 if (memberCounts.hasOwnProperty(memberName)) {
