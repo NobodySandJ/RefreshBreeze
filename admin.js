@@ -138,36 +138,17 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Fungsi untuk parsing tanggal yang lebih robust
-        const parseDate = (dateString) => {
-            if (!dateString) return null;
-            // Mencoba format DD/MM/YYYY HH:mm:ss
-            const parts = dateString.match(/(\d{1,2})\/(\d{1,2})\/(\d{4}) (\d{1,2}):(\d{1,2}):(\d{1,2})/);
-            if (parts) {
-                // new Date(year, monthIndex, day, hours, minutes, seconds)
-                return new Date(parts[3], parts[2] - 1, parts[1], parts[4], parts[5], parts[6]);
-            }
-            // Fallback ke parser standar jika format tidak cocok
-            const date = new Date(dateString);
-            return !isNaN(date) ? date : null;
-        };
-
         // Urutkan data berdasarkan timestamp terbaru
-        const sortedData = data.sort((a, b) => {
-            const dateA = parseDate(a.Timestamp);
-            const dateB = parseDate(b.Timestamp);
-            if (dateA && dateB) {
-                return dateB - dateA; // Urutan descending (terbaru dulu)
-            }
-            return 0;
-        });
+        const sortedData = data.sort((a, b) => new Date(b.Timestamp) - new Date(a.Timestamp));
 
         sortedData.forEach((row) => {
             const tr = document.createElement('tr');
-            const displayDate = parseDate(row.Timestamp);
-
+            
+            // =============================================================
+            // || MENGGUNAKAN KODE VERSI ANDA UNTUK MENAMPILKAN TANGGAL   ||
+            // =============================================================
             tr.innerHTML = `
-                <td class="px-4 py-2 text-sm">${displayDate ? displayDate.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }) : 'Tanggal tidak valid'}</td>
+                <td class="px-4 py-2 text-sm">${new Date(row.Timestamp).toLocaleString('id-ID')}</td>
                 <td class="px-4 py-2 text-sm">${row.Nama || ''}</td>
                 <td class="px-4 py-2 text-sm">${row.Email || ''}</td>
                 <td class="px-4 py-2 text-sm">${row.Whatsapp || ''}</td>
@@ -180,42 +161,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function calculateSummary(data) {
-    // Kalkulasi Total Pendapatan
-    const totalRevenue = data.reduce((sum, row) => sum + parseFloat(row.Total || 0), 0);
-    totalRevenueEl.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(totalRevenue);
+        // Kalkulasi Total Pendapatan
+        const totalRevenue = data.reduce((sum, row) => sum + parseFloat(row.Total || 0), 0);
+        totalRevenueEl.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(totalRevenue);
 
-    // Kalkulasi Penjualan per Member
-    const memberCounts = {
-        'Yan Yee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0, 'All Member': 0
-    };
-    const memberNames = Object.keys(memberCounts);
+        // Kalkulasi Penjualan per Member
+        const memberCounts = {
+            'YanYee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0, 'All Member': 0
+        };
+        const memberNames = Object.keys(memberCounts);
+        
+        const chekiRegex = new RegExp(`Cheki (${memberNames.join('|')}).*?\\(x(\\d+)\\)`, 'g');
 
-    // =============================================================
-    // || PERBAIKAN DI SINI                                       ||
-    // || Regex diubah agar lebih fleksibel terhadap emoji/karakter lain ||
-    // =============================================================
-    const chekiRegex = new RegExp(`Cheki (${memberNames.join('|')}).*?\\(x(\\d+)\\)`, 'g');
-
-    data.forEach(row => {
-        const pesanan = row.Items || '';
-        const matches = pesanan.matchAll(chekiRegex);
-        for (const match of matches) {
-            const memberName = match[1].trim(); // Menggunakan trim untuk jaga-jaga
-            const quantity = parseInt(match[2], 10);
-            if (memberCounts.hasOwnProperty(memberName)) {
-                memberCounts[memberName] += quantity;
+        data.forEach(row => {
+            const pesanan = row.Items || '';
+            const matches = pesanan.matchAll(chekiRegex);
+            for (const match of matches) {
+                const memberName = match[1].trim(); 
+                const quantity = parseInt(match[2], 10);
+                if (memberCounts.hasOwnProperty(memberName)) {
+                    memberCounts[memberName] += quantity;
+                }
             }
-        }
-    });
+        });
 
-    memberSummaryEl.innerHTML = '';
-    for (const member in memberCounts) {
-        memberSummaryEl.innerHTML += `
-            <div>
-                <p class="font-semibold text-gray-700">${member}</p>
-                <p class="text-2xl font-bold text-green-800">${memberCounts[member]}</p>
-            </div>
-        `;
+        memberSummaryEl.innerHTML = '';
+        for (const member in memberCounts) {
+            memberSummaryEl.innerHTML += `
+                <div>
+                    <p class="font-semibold text-gray-700">${member}</p>
+                    <p class="text-2xl font-bold text-green-800">${memberCounts[member]}</p>
+                </div>
+            `;
+        }
     }
-}
 });
