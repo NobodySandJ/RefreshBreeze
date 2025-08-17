@@ -291,38 +291,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LOGIKA FORM ---
-    function handleFormSubmit(e) {
-        e.preventDefault();
-        
-        // =======================================================================
-        // || PERBAIKAN 2: URL Google Script dihapus dari sini demi keamanan    ||
-        // =======================================================================
-        // const scriptURL = allData.config.googleScriptURL; // Baris ini tidak lagi diperlukan
+   // --- LOGIKA FORM ---
+async function handleFormSubmit(e) { // Tambahkan 'async' di sini
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const paymentProofFile = document.getElementById('payment-proof').files[0];
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const paymentProofFile = document.getElementById('payment-proof').files[0];
+    if (cart.length === 0) {
+        return Swal.fire({ icon: 'error', title: 'Oops...', text: 'Keranjang Anda kosong!', confirmButtonColor: '#079108' });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return Swal.fire({ icon: 'error', title: 'Format Email Salah', text: 'Mohon masukkan alamat email yang valid.', confirmButtonColor: '#079108' });
+    }
+    if (!paymentProofFile) {
+        return Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Harap upload bukti pembayaran Anda.', confirmButtonColor: '#079108' });
+    }
 
-        if (cart.length === 0) {
-            return Swal.fire({ icon: 'error', title: 'Oops...', text: 'Keranjang Anda kosong!', confirmButtonColor: '#079108' });
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            return Swal.fire({ icon: 'error', title: 'Format Email Salah', text: 'Mohon masukkan alamat email yang valid.', confirmButtonColor: '#079108' });
-        }
-        if (!paymentProofFile) {
-            return Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Harap upload bukti pembayaran Anda.', confirmButtonColor: '#079108' });
-        }
+    const submitBtn = document.getElementById('submit-button');
+    const btnText = document.getElementById('submit-button-text');
+    const spinner = document.getElementById('submit-spinner');
+    submitBtn.disabled = true;
+    btnText.classList.add('hidden');
+    spinner.classList.remove('hidden');
 
-        const submitBtn = document.getElementById('submit-button');
-        const btnText = document.getElementById('submit-button-text');
-        const spinner = document.getElementById('submit-spinner');
-        submitBtn.disabled = true;
-        btnText.classList.add('hidden');
-        spinner.classList.remove('hidden');
+    // =======================================================================
+    // || PERBAIKAN: Tambahkan Kompresi Gambar di Sini                      ||
+    // =======================================================================
+    console.log(`Ukuran file asli: ${(paymentProofFile.size / 1024 / 1024).toFixed(2)} MB`);
+    
+    const options = {
+        maxSizeMB: 1,          // Ukuran maksimal file hasil kompresi (dalam MB)
+        maxWidthOrHeight: 1024,  // Resolusi maksimal gambar
+        useWebWorker: true     // Gunakan web worker agar proses tidak memblokir UI
+    }
+
+    try {
+        const compressedFile = await imageCompression(paymentProofFile, options);
+        console.log(`Ukuran file terkompresi: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`);
 
         const reader = new FileReader();
-        reader.readAsDataURL(paymentProofFile);
+        reader.readAsDataURL(compressedFile); // Baca file yang sudah dikompres
         reader.onloadend = () => {
             const fileBase64 = reader.result.split(',')[1];
             const itemsSummary = cart.map(item => `${item.name} (x${item.quantity})`).join('\n');
@@ -336,17 +346,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 items: itemsSummary,
                 total: total,
                 fileBase64: fileBase64,
-                fileType: paymentProofFile.type,
+                fileType: compressedFile.type, // Gunakan tipe file dari hasil kompresi
             };
 
-            // =======================================================================
-            // || PERBAIKAN 2: Mengirim data ke Serverless Function di Vercel       ||
-            // =======================================================================
             fetch('/api/submit-form', { 
                 method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload) 
             })
             .then(res => res.json())
@@ -380,7 +385,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         };
+        
+    } catch (error) {
+        console.error("Error saat kompresi:", error);
+        submitBtn.disabled = false;
+        btnText.classList.remove('hidden');
+        spinner.classList.add('hidden');
+        Swal.fire({
+            icon: 'error', title: 'Gagal Memproses Gambar',
+            text: 'Terjadi masalah saat mengompres gambar Anda. Silakan coba lagi dengan gambar lain.',
+            confirmButtonColor: '#079108'
+        });
     }
+}
 
     // Mulai aplikasi
     fetchData();
