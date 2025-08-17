@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td>${row.Whatsapp || ''}</td>
                 <td class="whitespace-pre-wrap">${row.Items || ''}</td>
                 <td>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(row.Total || 0)}</td>
-                <td><a href="${row.Linkbuktibayar || '#'}" target="_blank" class="text-blue-600 hover:underline">Lihat Bukti</a></td>
+                <td><a href="${row.Buktibayar || '#'}" target="_blank" class="text-blue-600 hover:underline">Lihat Bukti</a></td>
             `;
             ordersTbody.appendChild(tr);
         });
