@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const togglePasswordButton = document.getElementById('toggle-password');
     const passwordInput = document.getElementById('password');
     const toggleIcon = document.getElementById('toggle-icon');
-    document.getElementById('google-sheet-link').href = "https://docs.google.com/spreadsheets/d/1g_gE-8j2p5x3hI_G5qk4HAbzaOFdO4s8c-1K8gQ2-v0/edit#gid=0";
+    document.getElementById('google-sheet-link').href = "https://docs.google.com/spreadsheets/d/1aRadOkKvXtHYPirKhaqHovZ78WjemnDGi15OOd4ZxyM/edit?usp=sharing";
 
     // =================================================================
     // || FUNGSI UTAMA (LOGIN, FETCH, DLL)                            ||
