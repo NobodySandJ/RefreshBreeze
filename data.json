@@ -80,17 +80,32 @@
       "gallery": ["foto/aca.jpg", "foto/aca2.jpg"]
     },
     {
-      "id": "ayaya",
-      "namaPanggung": "Ayaya ❓",
-      "tagline": "Belum diketahui",
+      "id": "cally",
+      "namaPanggung": "Cally 🪼",
+      "tagline": "Lembut, Menari",
       "hadir": true,
-      "image": "https://placehold.co/400x300/c3e3a3/079108?text=Ayaya",
-      "jiko": "Misteri yang akan segera terungkap.",
+      "image": "foto/cally.jpg",
+      "jiko": "\"Mengapung lembut dihatimu seperti ubur ubur yang menari di laut🪼~ Hallo aku Cally!!!\"",
       "details": {
-        "Status": "Informasi akan datang",
-        "Pesan": "Tunggu kehadiranku!"
+        "Tanggal Lahir": "5 September",
+        "Hobi": "Menonton film, mempertanyakan eksistensi diri sendiri, menyanyi",
+        "Instagram": "@calismilikitiw"
       },
-      "gallery": ["https://placehold.co/400x300/c3e3a3/079108?text=Ayaya", "https://placehold.co/400x400/A9A9A9/FFFFFF?text=Secret"]
+      "gallery": ["foto/cally.jpg", "foto/cally2.jpg"]
+    },
+    {
+      "id": "piya",
+      "namaPanggung": "Piya 🐰",
+      "tagline": "Lompat Tinggi",
+      "hadir": true,
+      "image": "foto/piya.jpg",
+      "jiko": "\"Pyon! pyon! seperti kelinci yang melompat tinggi aku akan melompat ke posisi tertinggi di hatimu 🐰 ~ Hallo aku Piya !!\"",
+      "details": {
+        "Tanggal Lahir": "1 Januari",
+        "Hobi": "Gambar dan main rosbloz",
+        "Instagram": "@matcvie_"
+      },
+      "gallery": ["foto/piya.jpg", "foto/piya2.jpg"]
     },
     {
       "id": "group",
