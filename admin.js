@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Kalkulasi Penjualan per Member
         const memberCounts = {
-            'YanYee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0, 'All Member': 0
+            'YanYee': 0, 'Sinta': 0, 'Cissi': 0, 'Channie': 0, 'Acaa': 0, 'Ayaya': 0,'Cally': 0, 'Piya': 0,'All Member': 0
         };
         const memberNames = Object.keys(memberCounts);
         
