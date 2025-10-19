@@ -124,25 +124,25 @@
   ],
   "events": [
     {
-      "tanggal": "25",
-      "bulan": "JUL",
+      "tanggal": "27",
+      "bulan": "JULI",
       "tahun": "2025",
-      "nama": "Japan Fest Tulungagung",
-      "lokasi": "GOR Lembu Peteng, Tulungagung"
+      "nama": "I-ZONE",
+      "lokasi": "MA CHUNG UNIVERSITY MALANG"
     },
     {
-      "tanggal": "17",
-      "bulan": "AGU",
+      "tanggal": "5",
+      "bulan": "OCTOBER",
       "tahun": "2025",
-      "nama": "Malang Anime Day",
-      "lokasi": "Malang Creative Center, Malang"
+      "nama": "OHASE",
+      "lokasi": "PLAZA BENGAWAN MALANG"
     },
     {
-      "tanggal": "30",
-      "bulan": "SEP",
+      "tanggal": "--",
+      "bulan": "--",
       "tahun": "2025",
-      "nama": "Surabaya Cosplay Convention",
-      "lokasi": "Tunjungan Plaza Convention Hall, Surabaya"
+      "nama": "COMING SOON",
+      "lokasi": "COMING SOON"
     }
   ],
   "faqs": [
