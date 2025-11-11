@@ -27,7 +27,7 @@
       "id": "sinta",
       "namaPanggung": "Sinta 💚",
       "tagline": "Pemalu, Penasaran",
-      "hadir": true,
+      "hadir": false,
       "image": "foto/sinta.jpg",
       "jiko": "\"Si pemalu tetapi suka hal-hal baru, haloo aku Sintaa\"",
       "details": {
@@ -55,7 +55,7 @@
       "id": "channie",
       "namaPanggung": "Channie ✨",
       "tagline": "Kreatif, Menghibur",
-      "hadir": true,
+      "hadir": false,
       "image": "foto/channie.jpg",
       "jiko": "\"Semungil bintang yang akan menerangi hatimu seperti bulan, halo semuanya aku Channie!\"",
       "details": {
